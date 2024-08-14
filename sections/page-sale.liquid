@@ -1,0 +1,588 @@
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link type="text/css" href="{{ 'page-sale-v2.css' | asset_url }}" rel="stylesheet">
+
+<section class="page-section-sale">
+  <div style="display:none">
+    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24">
+      <symbol id="my-template-lock-icon" fill="none" viewBox="0 0 23 24">
+      <g clip-path="url(#a)">
+        <path fill="#D5AA5C" d="M14.1.13c-.98 3.8-1.96 7.59-2.95 11.39h.02c.54.11 1.7-2.3 2.6-5.43.87-3.01 1.01-5.64.33-5.97v.01Z"/>
+        <path fill="#D5AA5C" d="M14.02.11c-.76-.16-1.94 2.34-2.61 5.51-.67 3.14-.78 5.74-.26 5.91.99-3.8 1.97-7.59 2.95-11.39-.03-.01-.05-.02-.08-.03Z"/>
+        <path fill="url(#b)" d="M14.04.06c-.76-.16-1.94 2.34-2.61 5.51-.67 3.14-.78 5.74-.26 5.91.99-3.8 1.97-7.59 2.95-11.39-.03-.01-.05-.02-.08-.03Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="m8.7 23 2.58-11.48h-.02c-.54-.09-1.62 2.36-2.42 5.51-.77 3.04-.83 5.67-.14 5.97Z"/>
+        <path fill="#D5AA5C" d="M8.78 23.03c.78.13 1.88-2.4 2.44-5.59.56-3.16.57-5.77.05-5.92-.85 3.83-1.71 7.66-2.58 11.48.03.01.05.02.08.03h.01Z"/>
+        <path fill="url(#c)" d="M8.76 23.07c.78.13 1.88-2.4 2.44-5.59.56-3.16.57-5.77.05-5.92-.85 3.83-1.71 7.66-2.58 11.48.03.01.05.02.08.03h.01Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M5.2 21.23c2.13-3.32 4.25-6.64 6.36-9.96l-.01-.01c-.48-.27-2.32 1.69-4.16 4.39-1.77 2.61-2.73 5.06-2.19 5.58Z"/>
+        <path fill="#D5AA5C" d="M5.27 21.28c.68.38 2.59-1.64 4.22-4.46 1.61-2.79 2.51-5.24 2.07-5.56-2.11 3.32-4.23 6.64-6.36 9.96.02.02.04.04.07.05v.01Z"/>
+        <path fill="url(#d)" d="M5.23 21.32c.68.38 2.59-1.64 4.22-4.46 1.61-2.79 2.51-5.24 2.07-5.56-2.11 3.32-4.23 6.64-6.36 9.96.02.02.04.04.07.05v.01Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M.06 12.04c3.96-.2 7.93-.42 11.89-.65v-.02c-.06-.54-2.73-.9-6.02-.81-3.17.09-5.75.73-5.87 1.47v.01Z"/>
+        <path fill="#D5AA5C" d="M.05 12.12c.07.77 2.84 1.14 6.11.82 3.24-.32 5.78-1.01 5.79-1.55-3.96.23-7.93.44-11.89.65v.09l-.01-.01Z"/>
+        <path fill="url(#e)" d="M0 12.11c.07.77 2.84 1.14 6.11.82 3.24-.32 5.79-1.01 5.79-1.55-3.96.23-7.93.44-11.89.65v.09L0 12.11Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M21.47 5.34c-3.4 2.02-6.81 4.02-10.23 6.02v.02c.3.45 2.85-.44 5.72-2.04 2.77-1.53 4.74-3.3 4.5-4h.01Z"/>
+        <path fill="#D5AA5C" d="M21.43 5.26c-.43-.65-3.04.31-5.78 2.09-2.71 1.76-4.66 3.53-4.41 4.01 3.42-2 6.83-4.01 10.23-6.02 0-.03-.02-.05-.04-.08Z"/>
+        <path fill="url(#f)" d="M21.48 5.25c-.43-.65-3.04.31-5.78 2.09-2.71 1.76-4.66 3.53-4.41 4.01 3.42-2 6.83-4.01 10.23-6.02 0-.03-.02-.05-.04-.08Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M17.91 2.56c-2.27 3.21-4.56 6.41-6.86 9.61l.01.01c.46.29 2.42-1.55 4.39-4.16 1.89-2.51 2.97-4.92 2.46-5.46Z"/>
+        <path fill="#D5AA5C" d="M17.85 2.5c-.66-.42-2.65 1.5-4.42 4.23-1.75 2.7-2.8 5.1-2.37 5.44 2.3-3.2 4.58-6.41 6.86-9.61a.435.435 0 0 0-.07-.06Z"/>
+        <path fill="url(#g)" d="M17.89 2.47c-.66-.42-2.65 1.5-4.42 4.23-1.75 2.7-2.8 5.1-2.37 5.44 2.3-3.2 4.58-6.41 6.86-9.61a.435.435 0 0 0-.07-.06Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M22.63 10.14c-3.93.56-7.86 1.1-11.8 1.64v.02c.1.53 2.8.68 6.07.32 3.15-.35 5.67-1.23 5.72-1.97l.01-.01Z"/>
+        <path fill="#D5AA5C" d="M22.62 10.06c-.14-.76-2.93-.88-6.15-.29-3.19.59-5.68 1.47-5.64 2.01 3.93-.53 7.87-1.08 11.8-1.64v-.09l-.01.01Z"/>
+        <path fill="url(#h)" d="M22.67 10.06c-.14-.76-2.93-.88-6.15-.29-3.19.59-5.68 1.47-5.64 2.01 3.93-.53 7.87-1.08 11.8-1.64v-.09l-.01.01Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M1.28 17.78c3.36-2.1 6.72-4.21 10.06-6.33v-.02c-.32-.44-2.83.54-5.66 2.22-2.72 1.61-4.66 3.43-4.4 4.13Z"/>
+        <path fill="#D5AA5C" d="M1.32 17.85c.45.63 3.05-.39 5.74-2.25 2.67-1.85 4.54-3.68 4.28-4.15-3.34 2.12-6.7 4.23-10.06 6.33 0 .03.02.05.04.08v-.01Z"/>
+        <path fill="url(#i)" d="M1.27 17.87c.45.63 3.05-.39 5.74-2.25 2.67-1.85 4.54-3.68 4.28-4.15-3.34 2.12-6.7 4.23-10.06 6.33a.3.3 0 0 0 .04.08v-.01Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M22.21 16.45c-3.58-1.7-7.16-3.4-10.72-5.12v.02c-.22.5 1.94 2.1 4.86 3.6 2.82 1.44 5.4 2.09 5.87 1.5h-.01Z"/>
+        <path fill="#D5AA5C" d="M22.26 16.38c.31-.71-1.94-2.34-4.95-3.62-2.99-1.27-5.55-1.89-5.82-1.42 3.57 1.71 7.14 3.42 10.72 5.12.02-.02.03-.05.05-.07v-.01Z"/>
+        <path fill="url(#j)" d="M22.3 16.41c.31-.71-1.94-2.34-4.95-3.62-2.99-1.27-5.55-1.89-5.82-1.42 3.57 1.71 7.14 3.42 10.72 5.12.02-.02.03-.05.05-.07v-.01Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M.62 6.67c3.61 1.61 7.22 3.2 10.85 4.79v-.02c.2-.51-2.01-2.03-4.97-3.44C3.65 6.65 1.06 6.06.62 6.66v.01Z"/>
+        <path fill="#D5AA5C" d="M.58 6.74c-.29.72 1.99 2.29 5.04 3.48 3.02 1.18 5.6 1.71 5.86 1.24C7.86 9.87 4.24 8.27.63 6.67c-.02.02-.03.05-.04.07H.58Z"/>
+        <path fill="url(#k)" d="M.54 6.71C.25 7.43 2.53 9 5.58 10.19c3.02 1.18 5.6 1.71 5.86 1.24C7.81 9.84 4.2 8.24.59 6.64c-.02.02-.03.05-.04.07H.54Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M17.44 21.63c-1.96-3.41-3.91-6.82-5.85-10.23h-.02c-.47.29.38 2.82 1.92 5.69 1.48 2.76 3.22 4.75 3.95 4.53v.01Z"/>
+        <path fill="#D5AA5C" d="M17.52 21.59c.67-.41-.23-3.01-1.97-5.76-1.72-2.72-3.47-4.67-3.96-4.44 1.94 3.41 3.89 6.82 5.85 10.23.03 0 .05-.02.08-.03Z"/>
+        <path fill="url(#l)" d="M17.53 21.64c.67-.41-.23-3.01-1.97-5.76-1.72-2.72-3.47-4.67-3.96-4.44 1.94 3.41 3.89 6.82 5.85 10.23.03 0 .05-.02.08-.03Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M5.33 1.46c2.05 3.35 4.1 6.69 6.17 10.03h.02c.46-.3-.48-2.8-2.11-5.62-1.58-2.72-3.37-4.66-4.08-4.41Z"/>
+        <path fill="#D5AA5C" d="M5.25 1.49c-.65.43.32 3.01 2.14 5.7 1.8 2.66 3.62 4.55 4.1 4.3C9.43 8.15 7.37 4.8 5.32 1.46c-.03 0-.05.02-.08.04l.01-.01Z"/>
+        <path fill="url(#m)" d="M5.24 1.45c-.65.43.32 3.01 2.14 5.7 1.8 2.66 3.62 4.55 4.1 4.3C9.42 8.11 7.36 4.76 5.31 1.42c-.03 0-.05.02-.08.04l.01-.01Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="M13.71 23.05c-.7-3.86-1.4-7.71-2.09-11.57h-.02c-.54.12-.58 2.79-.09 6 .47 3.09 1.44 5.54 2.2 5.56v.01Z"/>
+        <path fill="#D5AA5C" d="M13.8 23.04c.77-.17.8-2.92.07-6.08-.71-3.13-1.71-5.54-2.25-5.48.7 3.86 1.39 7.71 2.09 11.57h.09v-.01Z"/>
+        <path fill="url(#n)" d="M13.8 23.09c.77-.17.8-2.92.07-6.08-.71-3.13-1.71-5.54-2.25-5.48.7 3.86 1.39 7.71 2.09 11.57h.09v-.01Z" opacity=".58"/>
+        <path fill="#D5AA5C" d="m9.02.05 2.49 11.49h.02c.53-.14.48-2.81-.13-6C10.82 2.46 9.77.05 9.02.05Z"/>
+        <path fill="#D5AA5C" d="M8.93.06c-.76.2-.69 2.95.14 6.08.82 3.1 1.9 5.48 2.44 5.4L9.02.05h-.09v.01Z"/>
+        <path fill="url(#o)" d="M8.93 0c-.76.2-.69 2.95.14 6.08.82 3.1 1.9 5.48 2.44 5.4C10.68 7.66 9.85 3.83 9.02 0h-.09Z" opacity=".58"/>
+      </g>
+      <defs>
+        <linearGradient id="b" x1="16.828" x2="11.896" y1="2.721" y2="5.152" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="c" x1="8.626" x2="13.487" y1="21.411" y2="18.779" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="d" x1="6.087" x2="11.59" y1="20.007" y2="19.184" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="e" x1="1.727" x2="5.599" y1="13.746" y2="17.757" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="f" x1="21.305" x2="16.038" y1="8.484" y2="6.701" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="g" x1="18.457" x2="12.941" y1="4.921" y2="5.46" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="h" x1="21.239" x2="17.085" y1="13.78" y2="10.108" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="i" x1="2.086" x2="7.459" y1="15.975" y2="17.585" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="j" x1="20.105" x2="18.719" y1="16.858" y2="11.554" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="k" x1="3.376" x2="4.96" y1="5.217" y2="10.497" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="l" x1="15.961" x2="17.827" y1="20.575" y2="15.453" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="m" x1="8.986" x2="7.294" y1="1.417" y2="6.616" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <linearGradient id="n" x1="12.87" x2="16.334" y1="21.546" y2="17.297" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#D5AA5C"/>
+          <stop offset="1" stop-color="#D5AA5C" stop-opacity=".667"/>
+        </linearGradient>
+        <linearGradient id="o" x1="12.606" x2="9.306" y1="1.231" y2="5.606" gradientUnits="userSpaceOnUse">
+          <stop offset=".17" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="1" stop-color="#8D8D8C" stop-opacity=".3"/>
+        </linearGradient>
+        <clipPath id="a">
+          <path fill="#fff" d="M0 0h22.68v23.1H0z"/>
+        </clipPath>
+      </defs>
+      </symbol>
+    </svg>
+  </div>
+  <div class="hero-banner">
+    <img src="https://cdn.shopify.com/s/files/1/0490/1158/9282/files/sundarisilks-sale-banner-mobile_c7c2e1f2-8e24-4292-9e41-da29b865cf04.png?v=1717765855" width="515" height="703" class="mobile">
+    <img src="https://cdn.shopify.com/s/files/1/0490/1158/9282/files/sundarisilks-sale-banner-desktop.png?v=1717765855" width="1440" height="550" class="desktop">
+  </div>
+  {% comment %}
+  <div class="slider" style="background-image: url('{{ 'sundarisilks-sale-marquee-bg.png' | asset_url }}');">
+    <marquee width="100%" direction="left">
+      <ul>
+        <li>THE ANNUAL SALE</li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">20% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">30% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">40% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">50% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li>THE ANNUAL SALE</li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">10% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">20% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">30% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">40% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">50% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li>THE ANNUAL SALE</li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">20% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">30% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">40% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+        <li><a href="javascript:void(0);">50% OFF</a></li>
+        <li>
+          <svg width="24" height="24">
+            <use href="#my-template-lock-icon" />
+          </svg>
+        </li>
+      </ul>
+    </marquee>
+  </div>
+  {% endcomment %}
+  <div class="best-pick" style="background-image: url('{{ 'sundarisilks-sale-best-pick-bg.png' | asset_url }}')">
+    <img class="boder-bg border-bg-top" src="{{ 'sundarisilks-best-pick-bg-top.png' | asset_url }}">
+    <div class="title-wrapper">
+      <h1 class="title">Our best picks</h1>
+      <div class="title-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="196" height="21" fill="none" viewBox="0 0 196 21">
+          <circle cx="194" cy="10.1" r="2" fill="#1B5D31"/>
+          <circle cx="2" cy="10.1" r="2" fill="#1B5D31"/>
+          <path fill="#1B5D31" d="M90.906 5.567c2.466-.098 4.322 1.78 4.078 4.12-2.808.171-4.298-2.048-4.078-4.12Zm10.133 4.925c2.491-.073 4.323 1.804 4.078 4.096-2.173.44-4.468-1.853-4.078-4.096Zm1.514-7.462c.049 2.512-1.782 4.292-4.102 4.073-.464-2.146 1.831-4.438 4.102-4.072Zm2.565 2.561c.122 2.438-1.661 4.243-4.054 4.12-.562-2.072 1.685-4.34 4.054-4.12ZM94.96 10.492c.366 2.243-1.685 4.316-4.054 4.12-.44-2.12 1.587-4.217 4.054-4.12Zm-1.49 6.73c-.22-2.366 1.758-4.34 4.102-4.097.171 2.61-1.807 4.243-4.102 4.097Zm0-14.215c2.368-.22 4.395 1.78 4.102 4.071-2.222.342-4.249-1.633-4.102-4.071Zm9.06 14.19c-2.296.317-4.347-1.706-4.127-4.047 2.149-.463 4.2 1.536 4.127 4.047Zm-4.567-5.267c-1.05 0-1.832-.828-1.807-1.877.024-1.048.83-1.829 1.88-1.804 1.026.024 1.807.829 1.807 1.902-.025 1.024-.83 1.804-1.88 1.78Zm6.788-1.852c.611-.561 1.246-1.049 2.125-1.073.635 0 1.099.463 1.123 1.072.024.634-.464 1.122-1.123 1.122-.684 0-1.587-.463-2.125-1.121Zm-6.763 6.753c.537.537.903 1.098 1.074 1.78.147.659-.122 1.22-.684 1.415-.512.195-1.123 0-1.343-.512a1.593 1.593 0 0 1-.073-.951c.122-.683.537-1.22 1.026-1.732Zm-.001-13.459c-.537-.536-.903-1.097-1.074-1.78-.147-.658.146-1.243.708-1.438.562-.17 1.148.073 1.343.61.098.243.098.56.049.828-.098.707-.489 1.268-1.026 1.78Zm-6.715 6.73c-.635.585-1.27 1.073-2.124 1.097-.66.025-1.148-.439-1.148-1.073 0-.658.488-1.146 1.172-1.097.83.024 1.465.488 2.1 1.073ZM6 10.1l80-1c-1.569.5-1.569 1.5 0 2l-80-1Zm184 0-80-1c1.569.5 1.569 1.5 0 2l80-1Z"/>
+        </svg>
+      </div>
+    </div>
+    <ul class="best-pick-grid-list shop-by-curated-list">
+      <li>
+        <a href="https://www.sundarisilks.com/collections/kanchipuram-silks">
+          <div class="shop-by-curated-image">
+          <img src="{{'sundarisilks-sale-collection-kanchipuram-mobile.png' | asset_url}}" width="184" height="300" class="mobile" alt="Kanchipuram Silk">
+          <img src="{{'sundarisilks-sale-collection-kanchipuram-desktop.png' | asset_url}}" width="315" height="369" class="desktop" alt="Kanchipuram Silk">
+          </div>
+          <span class="shop-by-curated-button">
+            Kanchipuram <br> Silk
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.sundarisilks.com/collections/pochampally-silks">
+          <div class="shop-by-curated-image">
+          <img src="{{'sundarisilks-sale-collection-pochampally-mobile.png' | asset_url}}" width="184" height="300" class="mobile" alt="Pochampally Silk">
+          <img src="{{'sundarisilks-sale-collection-pochampally-desktop.png' | asset_url}}" width="315" height="369" class="desktop" alt="Pochampally Silk">
+          </div>
+          <span class="shop-by-curated-button">
+            Pochampally <br> Silk
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.sundarisilks.com/collections/tussar-silk">
+          <div class="shop-by-curated-image">
+          <img src="{{'sundarisilks-sale-collection-tussar-mobile.png' | asset_url}}" width="184" height="300" class="mobile" alt="Tussar Silk">
+          <img src="{{'sundarisilks-sale-collection-tussar-desktop.png' | asset_url}}" width="315" height="369" class="desktop" alt="Tussar Silk">
+          </div>
+          <span class="shop-by-curated-button">
+            Tussar <br> Silk
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.sundarisilks.com/collections/cotton?filter.v.price.gte=&filter.v.price.lte=&filter.p.product_type=Chettinadu+Cotton&sort_by=created-descending">
+          <div class="shop-by-curated-image">
+          <img src="{{'sundarisilks-sale-collection-chettinadu-mobile.png' | asset_url}}" width="184" height="300" class="mobile" alt="Chettinadu Cotton">
+          <img src="{{'sundarisilks-sale-collection-chettinadu-desktop.png' | asset_url}}" width="315" height="369" class="desktop" alt="Chettinadu Cotton">
+          </div>
+          <span class="shop-by-curated-button">
+            Chettinadu <br> Cotton
+          </span>
+        </a>
+      </li>
+    </ul>
+    <img class="boder-bg border-bg-bottom" src="{{ 'sundarisilks-best-pick-bg-bottom.png' | asset_url }}">
+  </div>
+  <div class="grid-container">
+    <ul class="best-pick-grid-list-two">
+      <li>
+        <a href="https://www.sundarisilks.com/collections/cotton-sarees">
+          <img src="{{'sundarisilks-sale-collection-1.png' | asset_url}}" width="650" height="778" alt="Sarees">
+          <div class="card-cta-wrapper">
+            <span class="card-cta"> SAREES </span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.sundarisilks.com/collections/men">
+          <img src="{{'sundarisilks-sale-collection-2.png' | asset_url}}" width="650" height="778" alt="Men">
+          <div class="card-cta-wrapper">
+            <span class="card-cta"> MEN </span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.sundarisilks.com/collections/girls">
+          <img src="{{'sundarisilks-sale-collection-3-girl.png' | asset_url}}" width="650" height="778" alt="Kids">
+          <div class="card-cta-wrapper">
+            <span class="card-cta"> KIDS </span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.sundarisilks.com/collections/women">
+          <img src="{{'sundarisilks-sale-collection-4.png' | asset_url}}" width="650" height="778" alt="Women">
+          <div class="card-cta-wrapper">
+            <span class="card-cta"> Women </span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="hero-banner hero-banner-collection owl-carousel">
+    <div class="hero-banner-collection-item">
+      <a href="https://www.sundarisilks.com/collections/kanchipuram-silks">
+      <img src="{{'sundarisilks-sale-banner-kanchipuram-mobile.png' | asset_url}}" width="768" height="768" class="mobile" alt="Kanchipuram Silk">
+      <img src="{{'sundarisilks-sale-banner-kanchipuram-desktop.png' | asset_url}}" width="1440" height="550" class="desktop" alt="Kanchipuram Silk">
+      </a>
+    </div>
+    <div class="hero-banner-collection-item">
+      <a href="https://www.sundarisilks.com/collections/patola">
+      <img src="{{'sundarisilks-sale-banner-patola-mobile.png' | asset_url}}" width="768" height="768" class="mobile" alt="Patola Silk">
+      <img src="{{'sundarisilks-sale-banner-patola-desktop.png' | asset_url}}" width="1440" height="550" class="desktop" alt="Patola Silk">
+      </a>
+    </div>
+    <div class="hero-banner-collection-item">
+      <a href="https://www.sundarisilks.com/collections/koorainadu-silk-cotton">
+      <img src="{{'sundarisilks-sale-banner-silk-cotton-mobile.png' | asset_url}}" width="768" height="768" class="mobile" alt="Koorainadu Silk Cotton">
+      <img src="{{'sundarisilks-sale-banner-silk-cotton-desktop.png' | asset_url}}" width="1440" height="550" class="desktop" alt="Koorainadu Silk Cotton">
+      </a>
+    </div>
+    <div class="hero-banner-collection-item">
+      <a href="https://www.sundarisilks.com/collections/maheswari-silk-cotton">
+      <img src="{{'sundarisilks-sale-banner-maheswari-mobile.png' | asset_url}}" width="768" height="768" class="mobile" alt="Maheswari Silk Cotton">
+      <img src="{{'sundarisilks-sale-banner-maheswari-desktop.png' | asset_url}}" width="1440" height="550" class="desktop" alt="Maheswari Silk Cotton">
+      </a>
+    </div>
+    <div class="hero-banner-collection-item">
+      <a href="https://www.sundarisilks.com/collections/women-long-kurtas">
+      <img src="{{'sundarisilks-sale-banner-kurta-mobile.png' | asset_url}}" width="768" height="768" class="mobile" alt="Long Kurta">
+      <img src="{{'sundarisilks-sale-banner-kurta-desktop.png' | asset_url}}" width="1440" height="550" class="desktop" alt="Long Kurta">
+      </a>
+    </div>
+  </div>
+  <div class="best-pick" style="background-image: url('{{ 'sundarisilks-sale-best-pick-bg.png' | asset_url }}')">
+    <img class="boder-bg border-bg-top" src="{{ 'sundarisilks-best-pick-bg-top.png' | asset_url }}">
+    <div class="title-wrapper">
+      <h1 class="title">Sundari Spotlight</h1>
+      <div class="title-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="196" height="21" fill="none" viewBox="0 0 196 21">
+          <circle cx="194" cy="10.1" r="2" fill="#1B5D31"/>
+          <circle cx="2" cy="10.1" r="2" fill="#1B5D31"/>
+          <path fill="#1B5D31" d="M90.906 5.567c2.466-.098 4.322 1.78 4.078 4.12-2.808.171-4.298-2.048-4.078-4.12Zm10.133 4.925c2.491-.073 4.323 1.804 4.078 4.096-2.173.44-4.468-1.853-4.078-4.096Zm1.514-7.462c.049 2.512-1.782 4.292-4.102 4.073-.464-2.146 1.831-4.438 4.102-4.072Zm2.565 2.561c.122 2.438-1.661 4.243-4.054 4.12-.562-2.072 1.685-4.34 4.054-4.12ZM94.96 10.492c.366 2.243-1.685 4.316-4.054 4.12-.44-2.12 1.587-4.217 4.054-4.12Zm-1.49 6.73c-.22-2.366 1.758-4.34 4.102-4.097.171 2.61-1.807 4.243-4.102 4.097Zm0-14.215c2.368-.22 4.395 1.78 4.102 4.071-2.222.342-4.249-1.633-4.102-4.071Zm9.06 14.19c-2.296.317-4.347-1.706-4.127-4.047 2.149-.463 4.2 1.536 4.127 4.047Zm-4.567-5.267c-1.05 0-1.832-.828-1.807-1.877.024-1.048.83-1.829 1.88-1.804 1.026.024 1.807.829 1.807 1.902-.025 1.024-.83 1.804-1.88 1.78Zm6.788-1.852c.611-.561 1.246-1.049 2.125-1.073.635 0 1.099.463 1.123 1.072.024.634-.464 1.122-1.123 1.122-.684 0-1.587-.463-2.125-1.121Zm-6.763 6.753c.537.537.903 1.098 1.074 1.78.147.659-.122 1.22-.684 1.415-.512.195-1.123 0-1.343-.512a1.593 1.593 0 0 1-.073-.951c.122-.683.537-1.22 1.026-1.732Zm-.001-13.459c-.537-.536-.903-1.097-1.074-1.78-.147-.658.146-1.243.708-1.438.562-.17 1.148.073 1.343.61.098.243.098.56.049.828-.098.707-.489 1.268-1.026 1.78Zm-6.715 6.73c-.635.585-1.27 1.073-2.124 1.097-.66.025-1.148-.439-1.148-1.073 0-.658.488-1.146 1.172-1.097.83.024 1.465.488 2.1 1.073ZM6 10.1l80-1c-1.569.5-1.569 1.5 0 2l-80-1Zm184 0-80-1c1.569.5 1.569 1.5 0 2l80-1Z"/>
+        </svg>
+      </div>
+    </div>
+    <ul class="best-pick-grid-list latestproducts owl-carousel">
+      {% assign collection = collections['mysore-silks'] %}
+      {% assign number_of_products_show = 8 %}
+      {% assign sorted_products = collection.products | sort: 'updated_at' %}
+      {% for product in sorted_products limit: number_of_products_show %}
+        <li>
+          <div class="product-card-header">
+            <a href="{{- product.url | within: collection }}">
+              <img class="latestimages" width="273" height="410" src="{{ product.featured_image | img_url: "medium" }}" alt="{{product.title}}">
+            </a>
+            <div class="add-to-card-botton">
+              <!-- product form -->
+              {%- form 'product', product, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                <!-- blouse stitching area -->
+                <!-- blouse stitching area -->
+                <div class="mb-3" hidden>
+                  <input
+                    type="number"
+                    disable
+                    class="form-control"
+                    name="quantity"
+                    id="quantity"
+                    value="1"
+                    min="1"
+                    max="1"
+                  >
+                  <input
+                    type="text"
+                    disable
+                    class="jselecteValue"
+                    name="id"
+                    value="{{ product.selected_or_first_available_variant.id }}"
+                    {% if product.selected_or_first_available_variant.available == false %}
+                      disabled
+                    {% endif %}
+                  >
+                </div>
+                <div class="product-form__buttons">
+                  <div class="button-add-to-cart">
+                    <button
+                      type="submit"
+                      name="add"
+                      class="button product-form__submit  button--primary"
+                      data-status-button="{%- if product.selected_or_first_available_variant.available -%} add-to-cart {%- else -%} soldout {%- endif -%}"
+                      {% if product.selected_or_first_available_variant.available == false %}
+                        Disabled
+                      {% endif %}
+                    >
+                      <span>
+                        {%- if product.selected_or_first_available_variant.available -%}
+                          ADD TO CART
+                        {%- else -%}
+                          SOLD OUT
+                        {%- endif -%}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              {%- endform -%}
+              <!-- end product form -->
+            </div>
+          </div>
+          <div class="product--title" >
+            {{- product.title | truncate: 28 | link_to: product.url }}
+          </div>
+          <div class="product__variant--price">
+            {% if product.price_varies %}
+              <p>
+                From {{ product.price_min | money_with_currency }} to {{ product.price_max | money_without_currency }}
+              </p>
+            {% else %}
+              <p>
+                {% if product.compare_at_price_max > product.price %}
+                  <span>
+                    <s>{{ product.compare_at_price_max | money_with_currency }}</s>
+                  </span>
+                  <span>{{ product.price | money_with_currency }}</span>
+                {% else %}
+                  <span>{{ product.price | money_with_currency }}</span>
+                {% endif %}
+              </p>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <img class="boder-bg border-bg-bottom" src="{{ 'sundarisilks-best-pick-bg-bottom.png' | asset_url }}">
+  </div>
+  <div class="sale-info-cards" style="background-image: url('{{ 'sundarisilks-sale-info-bg.png' | asset_url }}');">
+    <div class="grid-container">
+      <div class="sale-info-card">
+        <a href="https://calendly.com/sundarisilks/30min" class="sale-info-card-link">
+          <div class="sale-info-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
+              <path fill="#1B5D31" d="M12.853 9.143h-2.639v1.143h1.933l.967 1.933L14.374 16h6.539l1.523-4.571h-8.44l-1.143-2.286Zm7.997 3.429-.763 2.285h-4.89l-.762-2.285h6.415Z"/>
+              <path fill="#1B5D31" d="M3.929 24H16.5v3.429h-5.143v1.143h11.429v-1.143h-5.143V24h12.571V4.572H3.93V24ZM5.07 5.714h24v17.143h-24V5.714Z"/>
+              <path fill="#1B5D31" d="M15.929 18.857a1.143 1.143 0 1 0 0-2.285 1.143 1.143 0 0 0 0 2.285Zm3.428 0a1.143 1.143 0 1 0 0-2.285 1.143 1.143 0 0 0 0 2.285Z"/>
+            </svg>
+          </div>
+          <div class="sale-info-card-text">Virtual Shopping</div>
+        </a>
+      </div>
+      <div class="sale-info-card">
+        <a href="https://www.sundarisilks.com/products/sundari-silks-gift-card" class="sale-info-card-link">
+          <div class="sale-info-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+              <path fill="#1B5D31" d="M28.691 5H2.597A2.6 2.6 0 0 0 0 7.597v16.806A2.6 2.6 0 0 0 2.597 27h26.094a2.6 2.6 0 0 0 2.598-2.597V7.597A2.6 2.6 0 0 0 28.69 5Zm1.68 2.597v7.945H14.796c.652-.669 1.103-1.464 1.272-2.248.189-.875.011-1.639-.5-2.151-1.018-1.018-2.973-.658-4.45.82a5.501 5.501 0 0 0-.477.544v-6.59H28.69c.927 0 1.68.753 1.68 1.68ZM6.266 14.943c-.556-.555-.937-1.21-1.073-1.842-.121-.56-.031-1.026.253-1.31.21-.21.506-.308.85-.308.696 0 1.582.406 2.303 1.127.555.556.937 1.21 1.073 1.843.12.56.031 1.026-.253 1.31a.955.955 0 0 1-.12.101.977.977 0 0 0-.063.041c-.699.42-1.987.021-2.97-.961Zm4.869.966c-.021-.015-.044-.028-.065-.042a.948.948 0 0 1-.124-.104c-.284-.284-.374-.75-.253-1.31.136-.632.518-1.287 1.073-1.842 1.077-1.077 2.52-1.453 3.153-.82.284.284.374.75.253 1.31-.136.633-.517 1.287-1.073 1.843-.98.98-2.265 1.379-2.964.964ZM2.597 5.916h7.126v6.59a5.54 5.54 0 0 0-.477-.544c-1.477-1.477-3.431-1.838-4.449-.82-.512.512-.69 1.276-.501 2.151.169.784.62 1.58 1.272 2.248H.917V7.597c0-.927.754-1.68 1.68-1.68ZM.917 24.403v-7.945h5.827c.468.267.946.435 1.403.5-.194.268-.358.56-.489.872a4.304 4.304 0 0 0-.009 3.317.458.458 0 1 0 .848-.349 3.395 3.395 0 0 1 .007-2.615 3.393 3.393 0 0 1 1.22-1.501v9.4H2.596a1.681 1.681 0 0 1-1.68-1.68Zm27.774 1.68H10.64v-9.401a3.422 3.422 0 0 1 1.227 4.116.458.458 0 0 0 .848.349 4.333 4.333 0 0 0-.5-4.19 3.998 3.998 0 0 0 1.403-.499h16.754v7.945c0 .926-.754 1.68-1.68 1.68Zm-13.542-6.23c0-.253.205-.459.458-.459h6.875a.458.458 0 0 1 0 .917h-6.875a.458.458 0 0 1-.458-.458Zm11.916 1.833a.458.458 0 0 1-.458.458h-11a.458.458 0 0 1 0-.916h11c.253 0 .458.205.458.458Z"/>
+            </svg>
+          </div>
+          <div class="sale-info-card-text">E-Gift Card</div>
+        </a>
+      </div>
+      <div class="sale-info-card">
+        <a href="https://sundarisilksindia.in" class="sale-info-card-link">
+          <div class="sale-info-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+              <path fill="#1B5D31" d="M30.303 20.31a1.537 1.537 0 0 0-1.321-.156l-5.605 2.026a.426.426 0 1 0 .288.803l5.604-2.026c.186-.065.394-.034.595.083.227.136.405.364.504.644.189.537.01 1.113-.39 1.253l-5.495 1.958c-.015.004-.026.011-.042.019l-3.934 1.4a3.048 3.048 0 0 1-2.026 0l-.166-.056a.617.617 0 0 0-.05-.023l-5.971-2.128a3.87 3.87 0 0 0-2.598 0l-1.068.379-1.942-4.93 4.15-1.477a3.048 3.048 0 0 1 2.026 0l2.503.89.041.015 4.17 1.503c.189.068.337.22.42.428.09.227.09.489 0 .735-.091.25-.258.45-.47.564a.723.723 0 0 1-.594.06l-3.586-1.302a.431.431 0 0 0-.55.253.431.431 0 0 0 .254.55l3.586 1.302c.167.06.341.091.515.091.265 0 .53-.068.78-.204.398-.216.701-.58.864-1.027a1.9 1.9 0 0 0-.012-1.34 1.565 1.565 0 0 0-.924-.917l-.64-.23a.31.31 0 0 0-.105-.053l-3.427-1.22-1.314-.473a.464.464 0 0 0-.068-.019l-1.163-.413a3.874 3.874 0 0 0-2.598 0l-4.176 1.485-.273-.69a.432.432 0 0 0-.553-.242l-4.271 1.681a.43.43 0 0 0-.243.553l3.018 7.672a.43.43 0 0 0 .228.235.442.442 0 0 0 .325.004l4.272-1.682a.43.43 0 0 0 .242-.553l-.182-.458 1.038-.37a3.048 3.048 0 0 1 2.026 0l.162.056c.016.008.03.015.05.023l5.971 2.124a3.913 3.913 0 0 0 2.598 0l5.971-2.124c.016-.008.035-.012.05-.023l3.446-1.227c.428-.151.757-.492.924-.954a2.074 2.074 0 0 0-.016-1.394 1.956 1.956 0 0 0-.848-1.079Zm-25.61 6.713-2.707-6.877 3.477-1.37 2.707 6.876-3.476 1.37Zm17.064-10.27a6.384 6.384 0 0 0 6.376-6.376A6.384 6.384 0 0 0 21.757 4a6.384 6.384 0 0 0-6.377 6.377c.004 3.514 2.863 6.376 6.377 6.376Zm0-11.814a5.443 5.443 0 0 1 5.437 5.438 5.443 5.443 0 0 1-5.437 5.437c-3 0-5.438-2.438-5.438-5.437 0-3 2.439-5.438 5.438-5.438Z"/>
+              <path fill="#1B5D31" d="M20.73 12.463c-.159-.2-.268-.519-.329-.95l-.81.151c.03.417.136.769.318 1.06.181.288.401.496.651.629.254.129.58.22.98.269v.803h.474v-.815c.564-.026 1.023-.227 1.378-.598.357-.37.53-.837.53-1.393 0-.254-.041-.489-.128-.705a1.608 1.608 0 0 0-.364-.564 1.98 1.98 0 0 0-.613-.401c-.133-.057-.398-.137-.803-.239V7.393c.262.053.47.166.621.333.152.167.25.409.296.727l.829-.125c-.072-.507-.284-.909-.636-1.2-.273-.231-.644-.368-1.114-.413v-.382h-.473v.382c-.534.053-.935.2-1.208.44-.405.355-.606.817-.606 1.389 0 .322.068.61.209.863.14.254.337.45.59.595a3.32 3.32 0 0 0 1.015.382v2.56c-.31-.034-.58-.197-.806-.48Zm1.288-1.969c.432.14.72.3.863.477.144.178.216.413.216.704 0 .341-.102.63-.307.864a1.193 1.193 0 0 1-.776.405v-2.45h.004Zm-1.253-1.329a1.032 1.032 0 0 1-.231-.69c0-.276.09-.514.268-.719a1.2 1.2 0 0 1 .739-.375v2.227c-.364-.11-.625-.257-.776-.443Z"/>
+            </svg>
+          </div>
+          <div class="sale-info-card-text">Save and Buy Scheme</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-gridList">
+    <div class="grid-container">
+      <div class="title-wrapper">
+        <h1 class="title">Readymade wear for effortless styling</h1>
+        <div class="title-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="196" height="21" fill="none" viewBox="0 0 196 21">
+            <circle cx="194" cy="10.1" r="2" fill="#1B5D31"/>
+            <circle cx="2" cy="10.1" r="2" fill="#1B5D31"/>
+            <path fill="#1B5D31" d="M90.906 5.567c2.466-.098 4.322 1.78 4.078 4.12-2.808.171-4.298-2.048-4.078-4.12Zm10.133 4.925c2.491-.073 4.323 1.804 4.078 4.096-2.173.44-4.468-1.853-4.078-4.096Zm1.514-7.462c.049 2.512-1.782 4.292-4.102 4.073-.464-2.146 1.831-4.438 4.102-4.072Zm2.565 2.561c.122 2.438-1.661 4.243-4.054 4.12-.562-2.072 1.685-4.34 4.054-4.12ZM94.96 10.492c.366 2.243-1.685 4.316-4.054 4.12-.44-2.12 1.587-4.217 4.054-4.12Zm-1.49 6.73c-.22-2.366 1.758-4.34 4.102-4.097.171 2.61-1.807 4.243-4.102 4.097Zm0-14.215c2.368-.22 4.395 1.78 4.102 4.071-2.222.342-4.249-1.633-4.102-4.071Zm9.06 14.19c-2.296.317-4.347-1.706-4.127-4.047 2.149-.463 4.2 1.536 4.127 4.047Zm-4.567-5.267c-1.05 0-1.832-.828-1.807-1.877.024-1.048.83-1.829 1.88-1.804 1.026.024 1.807.829 1.807 1.902-.025 1.024-.83 1.804-1.88 1.78Zm6.788-1.852c.611-.561 1.246-1.049 2.125-1.073.635 0 1.099.463 1.123 1.072.024.634-.464 1.122-1.123 1.122-.684 0-1.587-.463-2.125-1.121Zm-6.763 6.753c.537.537.903 1.098 1.074 1.78.147.659-.122 1.22-.684 1.415-.512.195-1.123 0-1.343-.512a1.593 1.593 0 0 1-.073-.951c.122-.683.537-1.22 1.026-1.732Zm-.001-13.459c-.537-.536-.903-1.097-1.074-1.78-.147-.658.146-1.243.708-1.438.562-.17 1.148.073 1.343.61.098.243.098.56.049.828-.098.707-.489 1.268-1.026 1.78Zm-6.715 6.73c-.635.585-1.27 1.073-2.124 1.097-.66.025-1.148-.439-1.148-1.073 0-.658.488-1.146 1.172-1.097.83.024 1.465.488 2.1 1.073ZM6 10.1l80-1c-1.569.5-1.569 1.5 0 2l-80-1Zm184 0-80-1c1.569.5 1.569 1.5 0 2l80-1Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="blog-grid">
+        {% for article in blogs.article.articles limit: 3 %}
+          <div class="blog-card">
+            <a href="{{ article.url }}" class="blog-card-url">
+              {% if article.image %}
+                {{
+                  article.image
+                  | image_url: width: 404, height: 296
+                  | image_tag: alt: article.title , class: 'blog-card-image'
+                }}
+                <noscript>
+                  <p>
+                    {{ article.image | image_url: width: 404, height: 296 | image_tag: article.title }}
+                  </p>
+                </noscript>
+              {% endif %}
+              <h2 class="blog-card-title">
+                {{ article.title | truncate: 48 }}
+                <span>{{ article.published_at | date: '%B %d, %Y' }}</span>
+              </h2>
+              <p class="blog-card-excerpt">
+                {% if article.excerpt.size > 0 %}
+                  {{ article.excerpt }}
+                {% else %}
+                  {{ article.content | strip_html | truncate: 100 }}
+                {% endif %}
+              </p>
+              <p class="blog-card-btn">View Details</p>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% comment %} <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> {% endcomment %}
+<script>
+  $('.latestproducts').slick({
+    autoplay: true,
+    dots: true,
+    centerPadding: '10px',
+    autoplaySpeed: 2000,
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          autoplay: true,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          autoplay: true,
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          autoplay: false,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+});
+
+$('.hero-banner-collection.owl-carousel').slick({
+  autoplay: true,
+  centerPadding: '10px',
+  autoplaySpeed: 2000,
+  arrows: false,
+  dots: true,
+  infinite: true,
+  slidesToScroll: 1,
+  slidesToShow: 1,
+  lazyLoad: 'ondemand',
+});
+</script>

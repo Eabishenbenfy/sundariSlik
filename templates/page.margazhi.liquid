@@ -1,0 +1,690 @@
+<link
+  rel="preload"
+  as="image"
+  href="{{ 'margazhi-banner.png' | asset_url }}"
+>
+<link
+  rel="preload"
+  as="image"
+  href="{{ 'margazhi-bg-pattern.png' | asset_url }}"
+>
+<link
+  rel="preload"
+  as="image"
+  href="{{ 'margazhi-divider.png' | asset_url }}"
+>
+<link
+  rel="preload"
+  as="image"
+  href="{{ 'margazhi-gallery.png' | asset_url }}"
+>
+
+<link
+  rel="preload"
+  as="image"
+  href="{{ 'margazhi-video-1.png' | asset_url }}"
+>
+
+<link
+  rel="preload"
+  as="image"
+  href="{{ 'margazhi-video-2.png' | asset_url }}"
+>
+<link
+  rel="preload"
+  as="image"
+  href="{{ 'margazhi-video-3.png' | asset_url }}"
+>
+<link
+  rel="preload"
+  as="image"
+  href="{{ 'margazhi-video-4.png' | asset_url }}"
+>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.min.css"
+  integrity="sha512-LFWtdAXHQuwUGH9cImO9blA3a3GfQNkpF2uRlhaOpSbDevNyK1rmAjs13mtpjvWyi+flP7zYWboqY+8Mkd42xA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+>
+
+<style>
+    .margazhi-banner iframe {
+      width: 100%;
+      height: calc(100vh - 130px);
+      display: block;
+      border: 0;
+    }
+
+    .margazhi-product-collection-wrapper,
+    .margazhi-gallery-wrapper {
+      padding: 80px 0;
+      background: url('https://www.sundarisilks.com/cdn/shop/t/25/assets/margazhi-bg-pattern.png?v=1') repeat, #fbf5d9;
+    }
+    .margazhi-product-collection,
+    .margazhi-container {
+      margin: 0 auto;
+      max-width: 1340px;
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    .margazhi-gallery h2 {
+      color: var(--Margazhi-Primary-Brown, #8e4533);
+      text-align: center;
+      font-family: Playfair Display;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 40px; /* 125% */
+      padding-bottom: 12px;
+    }
+    .margazhi-gallery p {
+      color: var(--Margazhi-Primary-Brown, #8e4533);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px; /* 150% */
+      padding-bottom: 8px;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 14px;
+    }
+    .margazhi-divider {
+      padding-top: 8px;
+      width: auto;
+      margin: 0 auto;
+    }
+    .margazhi-gallery-images {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 32px;
+      padding: 0 14px;
+      display: grid;
+      gap: 20px;
+      justify-content: center;
+      grid-template-areas:
+        'one'
+        'four'
+        'seven'
+        'ten'
+        'twele'
+        'two'
+        'five'
+        'eight'
+        'thirteen'
+        'three'
+        'six'
+        'nine'
+        'eleven'
+        'fourteen';
+    }
+    @media (min-width: 576px) {
+      .margazhi-gallery-images {
+        grid-template-areas:
+          'one two'
+          'four five'
+          'seven five'
+          'seven eight'
+          'ten eight'
+          'twele thirteen'
+          'twele thirteen'
+          'three nine'
+          'six eleven'
+          'six fourteen';
+      }
+      .margazhi-gallery-images a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .margazhi-gallery-images a img {
+        object-fit: cover;
+        height: 100%;
+        border-radius: 10px;
+      }
+    }
+    .margazhi-gallery-images div:nth-child(1) {
+      grid-area: one;
+    }
+    .margazhi-gallery-images div:nth-child(2) {
+      grid-area: two;
+    }
+    .margazhi-gallery-images div:nth-child(3) {
+      grid-area: three;
+    }
+    .margazhi-gallery-images div:nth-child(4) {
+      grid-area: four;
+    }
+    .margazhi-gallery-images div:nth-child(5) {
+      grid-area: five;
+    }
+    .margazhi-gallery-images div:nth-child(6) {
+      grid-area: six;
+    }
+    .margazhi-gallery-images div:nth-child(7) {
+      grid-area: seven;
+    }
+    .margazhi-gallery-images div:nth-child(8) {
+      grid-area: eight;
+    }
+    .margazhi-gallery-images div:nth-child(9) {
+      grid-area: nine;
+    }
+    .margazhi-gallery-images div:nth-child(10) {
+      grid-area: ten;
+    }
+    .margazhi-gallery-images div:nth-child(11) {
+      grid-area: eleven;
+    }
+    .margazhi-gallery-images div:nth-child(12) {
+      grid-area: twele;
+    }
+    .margazhi-gallery-images div:nth-child(13) {
+      grid-area: thirteen;
+    }
+    .margazhi-gallery-images div:nth-child(14) {
+      grid-area: fourteen;
+    }
+    .margazhi-videos iframe {
+      width: 100%;
+      height: 350px;
+      border-radius: 10px;
+    }
+    .margazhi-videos .margazhi-container {
+      background: var(--Neutral-White, #fff);
+      padding: 40px 0;
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-collection-grid {
+      margin-top: 30px;
+      display: grid;
+      gap: 10px;
+      justify-content: center;
+      padding: 0 14px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .product-card .product-image {
+      position: relative;
+    }
+    .product-card .product-image img {
+      border-radius: 10px;
+    }
+    .product-card .product-image img + img {
+      display: none;
+    }
+    .product-card:hover .product-image img {
+      display: none;
+    }
+    .product-card:hover .product-image img + img {
+      display: block;
+    }
+    .product-card .product-content {
+      padding: 8px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: block;
+      text-align: center;
+    }
+    .product-content-title {
+      color: var(--Margazhi-Primary-Brown, #8e4533);
+      white-space: nowrap;
+      /* Card Text */
+      font-family: Montserrat;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      display: block;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .product-content-price {
+      color: var(--Margazhi-Primary-Brown, #8e4533);
+      font-family: Montserrat;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      display: block;
+      text-align: center;
+    }
+
+    .video-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    .video-grid video {
+      width: 152px;
+    }
+    @media (min-width: 768px) {
+      .video-grid {
+        display: grid;
+        gap: 20px;
+        justify-content: flex-start;
+        grid-template-columns: 1fr 1fr 1fr !important;
+      }
+      .product-content-title {
+        width: 320px;
+      }
+
+      .margazhi-gallery-images {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 32px;
+        display: grid;
+        gap: 20px;
+        grid-template-areas:
+          'one two three'
+          'one two six'
+          'four five six'
+          'seven five nine'
+          'seven eight nine'
+          'ten eight eleven'
+          'ten thirteen eleven'
+          'twele thirteen fourteen';
+      }
+      .margazhi-gallery-images img {
+        width: 100%;
+        height: 100%;
+      }
+      .margazhi-videos .margazhi-container {
+        padding: 80px 0;
+        gap: 20px;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .product-collection-grid {
+        gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .product-card .product-content {
+        padding: 16px;
+      }
+      .product-content-title {
+        margin-bottom: 18px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .video-grid video {
+        width: 100%;
+      }
+      .product-collection-grid {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+      }
+    }
+    section.page-margazhi {
+      margin-bottom: -80px;
+  }
+</style>
+
+<section class="page-margazhi">
+  <div class="margazhi-banner">
+    <video
+      poster="{{ 'margazhi-video-poster.png'  |  asset_url }}"
+      loop
+      autoplay
+      muted
+      style="width: 100%; display: block; margin: 0 auto;"
+    >
+      <source src="{{ ' .mp4'  |  asset_url }}" type="video/mp4">
+    </video>
+  </div>
+  <div class="margazhi-gallery-wrapper">
+    <div class="margazhi-gallery">
+      <h2>Celebrating art and artistry</h2>
+      <p>
+        For years now, Sundari Silks has consistently strived to preserve art and artistry. Starting this Margazhi of
+        2023, this tradition extends to celebrate our artists and musicians as well.
+      </p>
+      <p>
+        Step into our world of fusion, tradition and innovation, as we foster an everlasting legacy that will be an ode
+        to our culture and rich heritage with Margazhi Utsav.
+      </p>
+      <img src="{{ 'margazhi-divider.png'  |  asset_url }}" alt="" class="margazhi-divider">
+      <div class="margazhi-gallery-images">
+        <div>
+          <a
+            href="{{'margazhi-gallery-1.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-1.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-2.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-2.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-3.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-3.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-4.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-4.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-5.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-5.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-6.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-6.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-7.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-7.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-8.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-8.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-9.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-9.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-10.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-10.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-11.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-11.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-12.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-12.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-13.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-13.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+        <div>
+          <a
+            href="{{'margazhi-gallery-14.png' |  asset_url}}"
+            data-pswp-width="1669"
+            data-pswp-height="2500"
+            target="_blank"
+          >
+            <img src="{{'margazhi-gallery-14.png' |  asset_url}}" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="margazhi-videos">
+    <div class="margazhi-container video-grid">
+      <video loop controls>
+        <source src="{{ 'margazhi-pavithra-chari-music.mp4'  |  asset_url }}" type="video/mp4">
+      </video>
+      <video loop controls><source src="{{ 'margazhi-saibruntha-music.mp4'  |  asset_url }}" type="video/mp4"></video>
+      <video loop controls><source src="{{ 'margazhi-spoorthi-music.mp4'  |  asset_url }}" type="video/mp4"></video>
+      <video loop controls><source src="{{ 'margazhi-visalakshi-music.mp4'  |  asset_url }}" type="video/mp4"></video>
+      <video loop controls>
+        <source src="{{ 'margazhi-sruthi-sarathy-music.mp4'  |  asset_url }}" type="video/mp4">
+      </video>
+      <video loop controls><source src="{{ 'margazhi-vivaan-music.mp4'  |  asset_url }}" type="video/mp4"></video>
+    </div>
+  </div>
+
+  <div class="margazhi-product-collection-wrapper">
+    <div class="margazhi-product-collection">
+      <div class="margazhi-container">
+        <h2>Margazhi Collections</h2>
+        <img src="{{ 'margazhi-divider.png'  |  asset_url }}" alt="" class="margazhi-divider">
+        <div class="product-collection-grid">
+          <div class="product-card">
+            <a
+              target="_blank"
+              href="https://www.sundarisilks.com/products/stripes-with-floral-buttas-deep-purple-nine-yards-silk-saree"
+            >
+              <div class="product-image">
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/products/Stripes_With_Floral_Buttas_Deep_Purple_Nine_Yards_Silk_Saree_1.png?v=1702547199"
+                  alt="Stripes With Floral Buttas Deep Purple Nine Yards Silk Saree"
+                >
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/products/Stripes_With_Floral_Buttas_Deep_Purple_Nine_Yards_Silk_Saree_2.png?v=1702547199"
+                  alt="Stripes With Floral Buttas Deep Purple Nine Yards Silk Saree"
+                >
+              </div>
+              <div class="product-content">
+                <div class="product-content-title">Stripes With Floral Buttas Deep Purple Nine Yards Silk Saree</div>
+                <div class="product-content-price">INR 39,600</div>
+              </div>
+            </a>
+          </div>
+          <div class="product-card">
+            <a
+              target="_blank"
+              href="https://www.sundarisilks.com/products/rudraksh-zari-border-mustard-yellow-nine-yards-silk-saree-1"
+            >
+              <div class="product-image">
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/products/Rudraksh_Zari_Border_Mustard_Yellow_Nine_Yards_Silk_Saree_1.png?v=1702545516"
+                  alt="Rudraksh Zari Border Mustard Yellow Nine Yards Silk Saree"
+                >
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/products/Rudraksh_Zari_Border_Mustard_Yellow_Nine_Yards_Silk_Saree_2.png?v=1702545516"
+                  alt="Rudraksh Zari Border Mustard Yellow Nine Yards Silk Saree"
+                >
+              </div>
+              <div class="product-content">
+                <div class="product-content-title">Rudraksh Zari Border Mustard Yellow Nine Yards Silk Saree</div>
+                <div class="product-content-price">INR 23,040</div>
+              </div>
+            </a>
+          </div>
+          <div class="product-card">
+            <a
+              target="_blank"
+              href="https://www.sundarisilks.com/products/allover-checks-design-red-and-orange-kanchipuram-silk-saree"
+            >
+              <div class="product-image">
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/products/Allover_Checks_Design_Red_And_Orange_Kanchipuram_Silk_Saree_1.png?v=1702545358"
+                  alt="Allover Checks Design Red And Orange Kanchipuram Silk Saree"
+                >
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/products/Allover_Checks_Design_Red_And_Orange_Kanchipuram_Silk_Saree_2.png?v=1702545358"
+                  alt="Allover Checks Design Red And Orange Kanchipuram Silk Saree"
+                >
+              </div>
+              <div class="product-content">
+                <div class="product-content-title">Allover Checks Design Red And Orange Kanchipuram Silk Saree</div>
+                <div class="product-content-price">INR 11,700</div>
+              </div>
+            </a>
+          </div>
+          <div class="product-card">
+            <a
+              target="_blank"
+              href="https://www.sundarisilks.com/products/rettai-pettu-zari-border-cherry-red-kanchipuram-silk-saree"
+            >
+              <div class="product-image">
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/products/Rettai_Pettu_Zari_Border_Cherry_Red_Kanchipuram_Silk_Saree_1.png?v=1702544360"
+                  alt="Rettai Pettu Zari Border Cherry Red Kanchipuram Silk Saree"
+                >
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/products/Rettai_Pettu_Zari_Border_Cherry_Red_Kanchipuram_Silk_Saree_2.png?v=1702544360"
+                  alt="Rettai Pettu Zari Border Cherry Red Kanchipuram Silk Saree"
+                >
+              </div>
+              <div class="product-content">
+                <div class="product-content-title">Rettai Pettu Zari Border Cherry Red Kanchipuram Silk Saree</div>
+                <div class="product-content-price">INR 19,500</div>
+              </div>
+            </a>
+          </div>
+          <div class="product-card">
+            <a
+              target="_blank"
+              href="https://www.sundarisilks.com/products/zari-checked-design-ruby-red-kanchipuram-silk-saree-1"
+            >
+              <div class="product-image">
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/files/Zari_Checked_Design_Ruby_Red_Kanchipuram_Silk_Saree_4.png?v=1715317891"
+                  alt="Zari Checked Design Ruby Red Kanchipuram Silk Saree"
+                >
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/files/Zari_Checked_Design_Ruby_Red_Kanchipuram_Silk_Saree_5.png?v=1715317891"
+                  alt="Zari Checked Design Ruby Red Kanchipuram Silk Saree"
+                >
+              </div>
+              <div class="product-content">
+                <div class="product-content-title">Zari Checked Design Ruby Red Kanchipuram Silk Saree</div>
+                <div class="product-content-price">INR 22,950</div>
+              </div>
+            </a>
+          </div>
+          <div class="product-card">
+            <a
+              target="_blank"
+              href="https://www.sundarisilks.com/products/threadwork-design-berry-red-chettinadu-cotton-saree-1"
+            >
+              <div class="product-image">
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/products/Threadwork_Design_Berry_Red_Chettinadu_Cotton_Saree_1_5ea64d7d-6ddd-4c35-b9e7-93076824e829.png?v=1702544227"
+                  alt="Threadwork Design Berry Red Chettinadu Cotton Saree"
+                >
+                <img
+                  src="https://www.sundarisilks.com/cdn/shop/products/Threadwork_Design_Berry_Red_Chettinadu_Cotton_Saree_2_179fd2f0-01eb-49eb-85e8-325fcdc12ab0.png?v=1702544227"
+                  alt="Threadwork Design Berry Red Chettinadu Cotton Saree"
+                >
+              </div>
+              <div class="product-content">
+                <div class="product-content-title">Threadwork Design Berry Red Chettinadu Cotton Saree</div>
+                <div class="product-content-price">INR 3,947</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/umd/photoswipe.umd.min.js"
+  integrity="sha512-xH3c1Jh7FbAehFlrbmiFLL7fm2YxZRXtRJ0O9Kc+RkCW5VLkLeARPe8RwgCfzYt4N1JRqzxZtBMgsJzLehA4Tw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/umd/photoswipe-lightbox.umd.min.js"
+  integrity="sha512-OB04yghyy2BT/S1t5HihjY4Jw9Us/5Fw1p5Jw41DIx71Kx+G4SjiPpd3n2ecsYAp7gJL0saH0J6k5elzVHp2+Q=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+
+<script type="text/javascript">
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  function onYouTubeIframeAPIReady() {
+    document.querySelectorAll('.ytplayer').forEach((item) => {
+      new YT.Player(item, {
+        events: {
+          onReady: (event) => {
+            event.target.playVideo();
+            event.target.mute();
+          },
+        },
+      });
+    });
+  }
+
+  // Nevermind - fixed it!
+  var lightbox = new PhotoSwipeLightbox({
+    gallery: '.margazhi-gallery-images',
+    children: 'div a',
+    // dynamic import is not supported in UMD version
+    pswpModule: PhotoSwipe,
+  });
+  lightbox.init();
+</script>

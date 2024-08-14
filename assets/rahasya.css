@@ -1,0 +1,280 @@
+
+  :root {
+	 --color-bg-rahasya: #080707;
+	 --color-bg-white: #fff;
+	 --color-bg-black: #000;
+}
+ body .template-page\:rahasya {
+	 background: var(--color-bg-rahasya);
+}
+ body .template-page\:rahasya .header-container, body .template-page\:rahasya .header-action-list, body .template-page\:rahasya .header-nav-list-main .menu-level-2, body .template-page\:rahasya .header-mobile-navigation-list .cd-primary-nav, body .template-page\:rahasya .header-mobile-navigation-list .cd-primary-nav li ul, body .template-page\:rahasya .header-search-area-wrapper .header-search-area-containerWrapper, body .template-page\:rahasya .header-search-area-wrapper .header-search-area-container .predictive-search input, body .template-page\:rahasya footer .footer-copyright, body .template-page\:rahasya footer {
+	 background: var(--color-bg-rahasya);
+}
+ body .template-page\:rahasya .header-action-list-icon .header-currency-price-list a.pick_currency.mldesk {
+	 background: var(--color-bg-rahasya) !important;
+}
+ body .template-page\:rahasya .header-nav-list-main .second-menu {
+	 background-color: transparent;
+}
+ body .template-page\:rahasya .header-action-list, body .template-page\:rahasya .header-mobile-navigation-list .cd-primary-nav li a, body .template-page\:rahasya .header-search-area-wrapper .header-search-area-container, body .template-page\:rahasya .header-search-area-wrapper .header-search-area-container .predictive-search, body .template-page\:rahasya .header-search-area-wrapper .header-search-area-container #predictive-search .predictive-content li a, body .template-page\:rahasya .header-search-area-wrapper .header-search-area-container .predictive-search input, body .template-page\:rahasya footer .footer-dataaction .subscription-from form input[type="email"], body .template-page\:rahasya footer .footer-copyright {
+	 border-color: var(--color-bg-white);
+}
+ body .template-page\:rahasya .header-action-list-icon .header-currency-price-list a.pick_currency.mldesk .nice-select .list {
+	 background: var(--color-bg-rahasya) !important;
+	 border-color: var(--color-bg-rahasya) !important;
+	 color: var(--color-bg-white) !important;
+}
+ body .template-page\:rahasya .header-action-list-icon div[class^="header"] svg, body .template-page\:rahasya .header-action-list, body .template-page\:rahasya .header-nav-list-main .menu-level-1 .menu-level-1-item a, body .template-page\:rahasya .header-nav-list-main .menu-level-2 a, body .template-page\:rahasya .header-mobile-navigation-list .cd-primary-nav li a, body .template-page\:rahasya .header-search-area-wrapper .header-search-area-container, body .template-page\:rahasya .header-search-area-wrapper .header-search-area-container .predictive-search input, body .template-page\:rahasya footer .footer-main p, body .template-page\:rahasya footer .footer-care li, body .template-page\:rahasya footer .footer-main .menu-link a, body .template-page\:rahasya footer .footer-dataaction .subscription-from form label span.title, body .template-page\:rahasya footer .footer-dataaction .subscription-from form label span.content, body .template-page\:rahasya footer .footer-dataaction .subscription-from form input[type="email"], body .template-page\:rahasya footer .footer-inbound-link > h2.footer-inbound-link__title, body .template-page\:rahasya footer .footer-inbound-link__lists a, body .template-page\:rahasya footer .footer-copyright, body .template-page\:rahasya footer .footer-copyright a {
+	 color: var(--color-bg-white);
+}
+ body .template-page\:rahasya .header-nav-list-main.menu-level-1-item.kanchipuram.second-menu.menu-level-2a:hover, body .template-page\:rahasya .header-nav-list-main.menu-level-1-item.mumbai-collection.second-menu.menu-level-2a:hover, body .template-page\:rahasya .header-nav-list-main.menu-level-1-item.decor-accessories.second-menu.menu-level-2a:hover, body .template-page\:rahasya .header-nav-list-main.menu-level-1-item.athirshtam.second-menu.menu-level-2a:hover {
+	 color: var(--color-bg-black);
+}
+ body .template-page\:rahasya .header-nav-list-main .menu-level-3 .menu-level-3-item a:hover {
+	 color: var(--color-bg-black);
+}
+ body .template-page\:rahasya .nice-select .option:hover {
+	 color: var(--color-bg-black) !important;
+}
+ body .template-page\:rahasya .breadcrumbs {
+	 display: none;
+}
+ body .template-page\:rahasya .section-rahasaya {
+	 max-width: 1140px;
+	 margin-left: auto;
+	 margin-right: auto;
+	 padding-top: 40px;
+	 padding-bottom: 40px;
+	 padding-left: 16px;
+	 padding-right: 16px;
+}
+ @media screen and (min-width: 420px) {
+	 body .template-page\:rahasya .section-rahasaya {
+		 padding-top: calc(8.2413539367vw + 5.3863134658px);
+	}
+}
+ @media screen and (min-width: 621.3333333333px) {
+	 body .template-page\:rahasya .section-rahasaya {
+		 padding-top: calc(15.3053715968vw - 38.5047829286px);
+	}
+}
+ @media screen and (min-width: 822.6666666667px) {
+	 body .template-page\:rahasya .section-rahasaya {
+		 padding-top: calc(8.2413539367vw + 19.608535688px);
+	}
+}
+ @media screen and (min-width: 1024px) {
+	 body .template-page\:rahasya .section-rahasaya {
+		 padding-top: 104px;
+	}
+}
+ @media screen and (min-width: 420px) {
+	 body .template-page\:rahasya .section-rahasaya {
+		 padding-bottom: calc(8.2413539367vw + 5.3863134658px);
+	}
+}
+ @media screen and (min-width: 621.3333333333px) {
+	 body .template-page\:rahasya .section-rahasaya {
+		 padding-bottom: calc(15.3053715968vw - 38.5047829286px);
+	}
+}
+ @media screen and (min-width: 822.6666666667px) {
+	 body .template-page\:rahasya .section-rahasaya {
+		 padding-bottom: calc(8.2413539367vw + 19.608535688px);
+	}
+}
+ @media screen and (min-width: 1024px) {
+	 body .template-page\:rahasya .section-rahasaya {
+		 padding-bottom: 104px;
+	}
+}
+ body .template-page\:rahasya .section-rahasaya br {
+	 display: none;
+}
+ @media (min-width: 992px) {
+	 body .template-page\:rahasya .section-rahasaya br {
+		 display: inline-block;
+	}
+}
+ body .template-page\:rahasya strong, body .template-page\:rahasya .fw\:500 {
+	 font-weight: 500;
+	 font-weight: bold;
+}
+ body .template-page\:rahasya .fs\:italic {
+	 font-style: italic;
+}
+ body .template-page\:rahasya .image-center {
+	 margin: 0 auto;
+	 text-align: center;
+	 display: block;
+}
+ body .template-page\:rahasya .text-title {
+	 line-height: 1.3;
+	 font-size: 22px;
+	 color: #dbcfa9;
+	 font-family: var(--font-playfair);
+	 text-align: center;
+}
+ @media (min-width: 1024px) {
+	 body .template-page\:rahasya .text-title {
+		 line-height: 1.6;
+		 font-size: 30px;
+	}
+}
+ body .template-page\:rahasya .text-subpara {
+	 font-size: 17px;
+	 line-height: 1.6;
+	 color: #dbcfa9;
+	 font-family: var(--font-montserrat);
+	 text-align: center;
+}
+ body .template-page\:rahasya .rahasya-logo {
+	 max-width: 240px;
+	 margin-top: 20px;
+	 margin-bottom: 20px;
+}
+ @media (min-width: 992px) {
+	 body .template-page\:rahasya .rahasya-logo {
+		 max-width: 280px;
+		 margin-top: 34px;
+		 margin-bottom: 46px;
+	}
+}
+ body .template-page\:rahasya .latest-innovation {
+	 max-width: 600px;
+	 margin-left: auto;
+	 margin-right: auto;
+}
+ @media (min-width: 992px) {
+	 body .template-page\:rahasya .latest-innovation {
+		 max-width: initial;
+	}
+}
+ body .template-page\:rahasya .latest-innovation h3 {
+	 margin-bottom: 22px;
+}
+ @media (min-width: 992px) {
+	 body .template-page\:rahasya .latest-innovation h3 {
+		 margin-bottom: 32px;
+	}
+}
+ body .template-page\:rahasya .latest-innovation p {
+	 margin-bottom: 22px;
+}
+ @media (min-width: 992px) {
+	 body .template-page\:rahasya .latest-innovation p {
+		 margin-bottom: 76px;
+	}
+}
+ body .template-page\:rahasya .rahasya-image-wrapper {
+	 position: relative;
+	 z-index: 1;
+}
+ body .template-page\:rahasya .rahasya-image-wrapper .design-cant-find {
+	 z-index: 3;
+	 position: relative;
+}
+ @media (min-width: 992px) {
+	 body .template-page\:rahasya .rahasya-image-wrapper .design-cant-find {
+		 position: absolute;
+		 top: 202px;
+		 left: 0;
+		 right: 0;
+		 margin-left: auto;
+		 margin-right: auto;
+	}
+}
+ body .template-page\:rahasya .rahasya-image-wrapper .design-cant-find h3 {
+	 margin-top: 22px;
+}
+ @media (min-width: 992px) {
+	 body .template-page\:rahasya .rahasya-image-wrapper .design-cant-find h3 {
+		 margin-top: 0;
+	}
+}
+ body .template-page\:rahasya .rahasya-image-wrapper .design-cant-find p {
+	 margin-top: 18px;
+}
+ @media (min-width: 992px) {
+	 body .template-page\:rahasya .rahasya-image-wrapper .design-cant-find p {
+		 margin-top: 32px;
+	}
+}
+ body .template-page\:rahasya .rahasya-image-wrapper .we-invite {
+	 z-index: 3;
+	 position: relative;
+}
+ @media (min-width: 992px) {
+	 body .template-page\:rahasya .rahasya-image-wrapper .we-invite {
+		 position: absolute;
+		 bottom: 62px;
+		 left: 0;
+		 right: 0;
+		 margin-left: auto;
+		 margin-right: auto;
+	}
+}
+ body .template-page\:rahasya .rahasya-image-wrapper .we-invite h3 {
+	 color: #dbcfa9;
+	 font-family: var(--font-montserrat);
+	 font-size: 22px;
+	 line-height: 1.3;
+	 margin-top: 22px;
+}
+ @media (min-width: 1024px) {
+	 body .template-page\:rahasya .rahasya-image-wrapper .we-invite h3 {
+		 margin-top: 0;
+		 font-size: 19px;
+		 line-height: 1.6;
+	}
+}
+ body .template-page\:rahasya .rahasya-image-wrapper .we-invite p {
+	 color: #dbcfa9;
+	 font-family: var(--font-montserrat);
+	 margin-top: 14px;
+	 font-size: 14px;
+}
+ @media (min-width: 968px) {
+	 body .template-page\:rahasya .rahasya-image-wrapper .we-invite p {
+		 margin-top: 42px;
+		 font-size: 19px;
+	}
+}
+ body .template-page\:rahasya .rahasya-image-wrapper .we-invite img {
+	 max-width: 138px;
+	 margin-left: auto;
+	 margin-right: auto;
+	 margin-top: 14px;
+	 margin-bottom: 14px;
+}
+ @media (min-width: 968px) {
+	 body .template-page\:rahasya .rahasya-image-wrapper .we-invite img {
+		 margin-top: 32px;
+		 margin-bottom: 32px;
+	}
+}
+ body .template-page\:rahasya .rahasya-image-wrapper .we-invite .treat-yourself {
+	 font-family: var(--font-playfair);
+	 text-align: center;
+	 margin-top: 0;
+	 font-size: 22px;
+}
+ @media (min-width: 968px) {
+	 body .template-page\:rahasya .rahasya-image-wrapper .we-invite .treat-yourself {
+		 font-size: 26px;
+	}
+}
+ body .template-page\:rahasya .rahasya-image-wrapper:after {
+	 z-index: 2;
+	 content: "";
+	 display: block;
+	 width: 100%;
+	 height: 100%;
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 background: url("https://cdn.shopify.com/s/files/1/0490/1158/9282/files/sundarisilks-rahasya-frames_2x_31968f87-740d-43ef-91c3-95b94eeca0fd.png?v=1680846143") no-repeat top center;
+	 background-size: contain;
+}
+ body .template-page\:rahasya  .pick_currency{display: none;}

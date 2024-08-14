@@ -1,0 +1,744 @@
+<style>
+  .page-about-us-3 {
+    background-color: #f1eeee;
+    margin-bottom: -80px;
+  }
+
+  .about-us-3-hero img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    .about-us-3-hero img {
+      height: auto;
+    }
+  }
+
+  .title {
+    padding: 0;
+    margin: 0 0 16px;
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: normal;
+    color: #a0772a;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 27px;
+    color: #333333;
+  }
+
+  .container-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  @media (min-width: 1200px) {
+    .title {
+      font-size: 40px;
+      line-height: 53px;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
+  p + p {
+    margin-top: 16px;
+  }
+
+  .about-timeless-elegance,
+  .about-us-3-timline_wrapper,
+  .about-legacy-evolution .about-us-3-content__wrapper,
+  .about-tradition,
+  .about-exclusive-redefined .about-us-3-content__wrapper,
+  .about-preserving-legacy-embracing {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 14px;
+    position: relative;
+  }
+
+  @media (min-width: 1200px) {
+    .about-timeless-elegance,
+    .about-us-3-timline_wrapper,
+    .about-legacy-evolution .about-us-3-content__wrapper,
+    .about-tradition,
+    .about-exclusive-redefined .about-us-3-content__wrapper,
+    .about-preserving-legacy-embracing {
+      padding: 52px 14px;
+    }
+  }
+
+  .about-timeless-elegance {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-timeless-elegance .about-us-3-content,
+  .about-timeless-elegance .about-us-3-image {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  @media (min-width: 768px) {
+    .about-timeless-elegance {
+      flex-direction: row;
+    }
+    .about-timeless-elegance .about-us-3-content {
+      flex: 1 0 792px;
+      max-width: 792px;
+    }
+
+    .about-timeless-elegance .about-us-3-image {
+      flex: 0 0 calc(100% - 792px - 20px);
+      max-width: calc(100% - 792px - 20px);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .about-timeless-elegance .about-us-3-content {
+      flex: 1 0 792px;
+      max-width: 792px;
+    }
+
+    .about-timeless-elegance .about-us-3-image {
+      flex: 0 0 calc(100% - 792px - 20px);
+      max-width: calc(100% - 792px - 20px);
+    }
+  }
+
+  .about-timeless-elegance br {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .about-timeless-elegance br {
+      display: block;
+    }
+  }
+
+  .about-timeless-elegance img {
+    padding-top: 20px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 780px) {
+    .about-timeless-elegance img {
+      margin: 0;
+      padding-top: 0;
+      position: absolute;
+      top: -120px;
+      right: 0;
+    }
+  }
+
+  .about-legacy-evolution {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  @media (min-width: 768px) {
+    .about-legacy-evolution {
+      padding-top: 102px;
+      padding-bottom: 102px;
+    }
+  }
+  .about-legacy-evolution .about-us-3-content {
+    max-width: 792px;
+  }
+
+  .about-legacy-evolution .title,
+  .about-legacy-evolution p {
+    color: #fff;
+  }
+
+  .about-tradition {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .about-tradition > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .about-tradition > .about-us-3-content {
+    padding: 20px 15px;
+  }
+  @media (min-width: 768px) {
+    .about-tradition {
+      flex-direction: row;
+    }
+    .about-tradition > div {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    .about-tradition > .about-us-3-content {
+      padding: 0 0 0 20px;
+    }
+  }
+
+  .about-us-3-timline_wrapper {
+    max-width: initial;
+  }
+  .about-us-3-timeline {
+    padding-top: 48px;
+    padding-bottom: 72px;
+  }
+
+  .about-us-3-timeline .title {
+    margin-bottom: 48px;
+  }
+
+  .variable-width {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .timeline--item_wrapper {
+    display: flex;
+    gap: 8px;
+  }
+
+  .timeline--year-marker {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 450px;
+    gap: 8px;
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .timeline--year-marker {
+      display: flex;
+    }
+  }
+  .timeline--year-marker::before {
+    content: '';
+    /* position: absolute; */
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: #e8cd9d;
+  }
+
+  .timeline--image-content {
+    display: inline-flex;
+    gap: 20px;
+    background: #fff;
+    opacity: 0;
+    width: 0;
+    transition: width 0.3s ease;
+  }
+
+  .timeline--item {
+    display: none;
+  }
+  .timeline--item.activeMe {
+    display: block;
+  }
+  .activeMe .timeline--image-content {
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    transition: width 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .timeline--item {
+      display: block;
+    }
+
+    .activeMe .timeline--image-content {
+      display: inline-flex;
+      flex-direction: row;
+      margin: 0 20px 0 0;
+    }
+  }
+
+  .timeline--image,
+  .timeline--content {
+    flex: 1 0 auto;
+  }
+  .timeline--content {
+    padding: 20px;
+    max-width: 450px;
+  }
+  @media (min-width: 768px) {
+    .timeline--content {
+      padding: 20px 20px 20px 0;
+      max-width: 450px;
+    }
+  }
+  .timeline--year {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 107px;
+    leading-trim: both;
+    text-edge: cap;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #a0772a;
+  }
+  .timeline--title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #333333;
+  }
+
+  .timeline--title + p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #333333;
+  }
+  .about-us-3-timeline .title {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .timeline_navigation {
+    max-width: 1200px;
+    margin: 10px auto 0;
+    text-align: right;
+  }
+  .timeline_navigation span {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    font-size: 24px;
+    line-height: 24px;
+    color: #000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-exclusive-redefined {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+  @media (min-width: 768px) {
+    .about-exclusive-redefined {
+      padding-top: 114px;
+      padding-bottom: 114px;
+    }
+  }
+
+  .about-exclusive-redefined .about-us-3-content {
+    max-width: 510px;
+  }
+  .about-exclusive-redefined .about-us-3-content p {
+    color: #fff;
+  }
+
+  .about-preserving-legacy-embracing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-preserving-legacy-embracing > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .about-preserving-legacy-embracing > .about-us-3-content {
+    padding: 20px 0 0 0;
+  }
+  @media (min-width: 768px) {
+    .about-preserving-legacy-embracing {
+      flex-direction: row;
+    }
+    .about-preserving-legacy-embracing > div {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    .about-preserving-legacy-embracing > .about-us-3-content {
+      padding: 0 0 0 20px;
+    }
+  }
+</style>
+
+<div class="page-about-us-3">
+  <section class="about-us-3-hero">
+    <img src="{{'sundarisilks-about-header.jpg' |  asset_url}}" alt="">
+  </section>
+  <section class="about-us-3-container about-us-3-content-image image-rotatar-right about-timeless-elegance">
+    <div class="about-us-3-content">
+      <h2 class="title">
+        The timeless elegance of <br>
+        Sundari Silks
+      </h2>
+      <p>
+        Sundari Silks stands tall as a beacon of artistry and tradition in India’s handloom history for over eight
+        decades now. Our story transcends time, as we weave it with an unwavering commitment to exquisite craftsmanship.
+      </p>
+    </div>
+    <div class="about-us-3-image">
+      <img src="{{ 'sundarisilks-about-store-image.png' |  asset_url }}" alt="">
+    </div>
+  </section>
+  <section
+    class="about-us-3-content-bgimage about-legacy-evolution container-bg"
+    style="background-image: url({{'sundarisilks-about-preserving-legacy-bg.png' |  asset_url}});"
+  >
+    <div class="about-us-3-content__wrapper">
+      <div class="about-us-3-content">
+        <h2 class="title">Preserving legacy, embracing evolution</h2>
+        <p>
+          At Sundari Silks, the past and present intertwine, embracing our legacy while evolving with contemporary
+          tastes. Our exclusive collection stands as a testament to our dedication to the finesse of silk craftsmanship
+          with a touch of modernity and aged elegance.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="about-us-3-image-content about-tradition">
+    <div class="about-us-3-image">
+      <img src="{{ 'sundarisilks-about-tradition.jpg' |  asset_url }}" alt="">
+    </div>
+    <div class="about-us-3-content">
+      <h2 class="title">Honouring a 25-year-old tradition</h2>
+      <p>
+        Our journey transcends generations. Every exquisite creation from our looms bears the unmistakable mark of this
+        tradition, we’ve upheld for nearly a hundred years now. Over the last two decades, we’ve established an address
+        that bears our insignia in the world of authentic silk sarees.
+      </p>
+      <p>
+        Apart from Chennai, we’ve also established a flourishing presence in Mumbai. This signifies not just growth, but
+        our commitment to bring timeless artistry closer to connoisseurs.
+      </p>
+    </div>
+  </section>
+  <section
+    class="about-us-3-timeline container-bg"
+    style="background-image: url({{'sundarisilks-about-timeline-bg.png' |  asset_url}});"
+  >
+    <h2 class="title">Timeline</h2>
+    <div class="about-us-3-timline_wrapper">
+      <div class="variable-width">
+
+        <div class="timeline--item activeMe">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">1998</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'sundarisilks-timeline-aboutus-1.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">1998</div>
+                <div class="timeline--title">The Brand was Born</div>
+                <p>
+                  With a treasury of innovations and endeavours, we gave life to the brand "Sundari Silks," anchoring
+                  its roots right here in Chennai.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--item">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">1999</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'sundarisilks-about-timeline-1999.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">1999</div>
+                <div class="timeline--title">Signature Handwoven Sarees: An Inception</div>
+                <p>
+                  Driven by the commitment to uphold the genuineness of our textiles, we established a handloom facility
+                  in Thirucherai, equipped with 70 looms.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--item">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">2011</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'sundarisilks-about-timeline-2011.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">2011</div>
+                <div class="timeline--title">A Mini Kanchipuram at Vile Parle!</div>
+                <p>
+                  Taking our footsteps further across the country, we inaugurated a store in the City of Dreams, Mumbai!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--item">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">2012</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'sundarisilks-about-timeline-2012.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">2012</div>
+                <div class="timeline--title">Our First Fibre Fusion</div>
+                <p>
+                  Through our relentless pursuit of innovation, we pioneered the art of blending Silk and Bamboo Fiber
+                  in weaving.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--item">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">2019</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'ssundarisilks-about-timeline-2019.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">2019</div>
+                <div class="timeline--title">Embracing Innovation in Technique</div>
+                <p>
+                  With an intention to add unique techniques to our craftsmanship, we Incorporated copper zari in the
+                  Kanchipuram silk sarees and introduced the 2 in 1 Upada-Jacquard technique of weaving.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--item">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">2020</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'sundarisilks-about-timeline-2020.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">2020</div>
+                <div class="timeline--title">Unveiled a Saree One of its Kind</div>
+                <p>
+                  We crafted a saree with an interlocking technique, seamlessly extending the border design throughout
+                  the body butta. This unique masterpiece demands twice the weaving time of conventional sarees.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--item">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">2021</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'sundarisilks-about-timeline-2021-0.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">2021</div>
+                <div class="timeline--title">Preserving Heritage with New Initiatives</div>
+                <p>
+                  In 2021, we took up the revival of the legacy of Kodalikaruppur sarees. We launched "Athirshtam" –
+                  exquisite oxidized silver jewellery and introduced a saree refurbishing facility to embody our
+                  appreciation towards heritage passed down through generations. We also inaugurated "Naran & Alankara",
+                  our in-house tailoring units for personalized ethnic attires.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--item">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">2021</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'sundarisilks-about-timeline-2021-1.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">2021</div>
+                <div class="timeline--title">Preserving Heritage with New Initiatives</div>
+                <p>
+                  In 2021, we took up the revival of the legacy of Kodalikaruppur sarees. We launched "Athirshtam" –
+                  exquisite oxidized silver jewellery and introduced a saree refurbishing facility to embody our
+                  appreciation towards heritage passed down through generations. We also inaugurated "Naran & Alankara",
+                  our in-house tailoring units for personalized ethnic attires.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--item">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">2022</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'sundarisilks-about-timeline-2022.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">2022</div>
+                <div class="timeline--title">Of Pure Divinity and Craftsmanship</div>
+                <p>
+                  Undertaking an extraordinary endeavour, we custom-wove a stunning 90 feet saree, a masterpiece
+                  dedicated to goddess Ambal. This awe-inspiring creation stands as a testament to our dedication to
+                  artistry and tradition.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--item">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">2023</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'sundarisilks-about-timeline-2023-0.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">2023</div>
+                <div class="timeline--title">The Regal Encounter</div>
+                <p>
+                  Princess Mary Crown of Denmark honored us with her presence, acknowledging our brand's elegance and
+                  craftsmanship.
+                </p>
+                <p>
+                  Pushing the boundaries of creativity and fusing tradition with contemporary artistry, we introduced an
+                  innovation that features an Animal Border on Non-Repeat Sarees.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline--item">
+          <div class="timeline--item_wrapper">
+            <h3 class="timeline--year-marker">2023</h3>
+            <div class="timeline--image-content">
+              <div class="timeline--image">
+                <img src="{{'sundarisilks-about-timeline-2023-1.png' |  asset_url}}" alt="">
+              </div>
+              <div class="timeline--content">
+                <div class="timeline--year">2023</div>
+                <div class="timeline--title">The Regal Encounter</div>
+                <p>
+                  Princess Mary Crown of Denmark honored us with her presence, acknowledging our brand's elegance and
+                  craftsmanship.
+                </p>
+                <p>
+                  Pushing the boundaries of creativity and fusing tradition with contemporary artistry, we introduced an
+                  innovation that features an Animal Border on Non-Repeat Sarees.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline_navigation">
+        <span class="prev">
+          <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.188937 7.51862L6.97775 13.9871C7.09102 14.095 7.24152 14.1553 7.39802 14.1553C7.55451 14.1553 7.70501 14.095 7.81828 13.9871L7.82559 13.9797C7.88069 13.9274 7.92457 13.8644 7.95455 13.7945C7.98454 13.7247 8 13.6495 8 13.5735C8 13.4975 7.98454 13.4223 7.95455 13.3524C7.92457 13.2826 7.88069 13.2196 7.82559 13.1672L1.43268 7.07642L7.82559 0.988053C7.88069 0.935705 7.92457 0.872694 7.95455 0.802854C7.98454 0.733013 8 0.657802 8 0.581797C8 0.505792 7.98454 0.430581 7.95455 0.360741C7.92457 0.2909 7.88069 0.227888 7.82559 0.17554L7.81828 0.16823C7.70501 0.0602465 7.55451 6.67572e-06 7.39802 6.67572e-06C7.24152 6.67572e-06 7.09102 0.0602465 6.97775 0.16823L0.188937 6.63667C0.129232 6.69355 0.0817007 6.76197 0.0492236 6.83777C0.0167465 6.91357 0 6.99518 0 7.07764C0 7.16011 0.0167465 7.24171 0.0492236 7.31751C0.0817007 7.39331 0.129232 7.46173 0.188937 7.51862Z" fill="#333333"/>
+          </svg>
+        </span>
+        <span class="next">
+          <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.81106 7.51861L1.02225 13.9871C0.908977 14.095 0.758483 14.1553 0.601985 14.1553C0.445487 14.1553 0.294995 14.095 0.18172 13.9871L0.174411 13.9797C0.119307 13.9274 0.0754294 13.8644 0.0454459 13.7945C0.0154624 13.7247 4.76837e-07 13.6495 4.76837e-07 13.5735C4.76837e-07 13.4975 0.0154624 13.4223 0.0454459 13.3524C0.0754294 13.2826 0.119307 13.2196 0.174411 13.1672L6.56732 7.07642L0.174411 0.988052C0.119307 0.935704 0.0754294 0.872693 0.0454459 0.802852C0.0154624 0.733011 4.76837e-07 0.657801 4.76837e-07 0.581796C4.76837e-07 0.505791 0.0154624 0.430581 0.0454459 0.36074C0.0754294 0.290899 0.119307 0.227887 0.174411 0.175539L0.18172 0.16823C0.294995 0.0602465 0.445487 6.67572e-06 0.601985 6.67572e-06C0.758483 6.67572e-06 0.908977 0.0602465 1.02225 0.16823L7.81106 6.63667C7.87077 6.69355 7.9183 6.76197 7.95078 6.83777C7.98325 6.91357 8 6.99518 8 7.07764C8 7.16011 7.98325 7.24171 7.95078 7.31751C7.9183 7.39331 7.87077 7.46173 7.81106 7.51861Z" fill="#333333"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </section>
+  <section
+    class="about-us-3-content-bgimage about-exclusive-redefined container-bg"
+    style="background-image: url('{{'sundarisilks-about-exclusivity-redefined.jpg' |  asset_url}}');"
+  >
+    <div class="about-us-3-content__wrapper">
+      <div class="about-us-3-content">
+        <h2 class="title">Exclusivity redefined</h2>
+        <p>
+          Our collection transcends from ordinary to showcase weaves from all over the country. From the regal allure of
+          Kanchipuram Silks to the intricate mastery of Banarasi Brocades, each creation is a masterpiece. Our range
+          extends beyond traditional sarees encompassing jewellery, ethnic wear, home furnishings, and curated
+          handicrafts with each piece encapsulating uniqueness.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="about-us-3-container about-us-3-image-content about-preserving-legacy-embracing">
+    <div class="about-us-3-image">
+      <img src="{{ 'sundarisilks-about-preserving-legacy.png' |  asset_url }}" alt="">
+    </div>
+    <div class="about-us-3-content">
+      <h2 class="title">Preserving legacy, embracing evolution</h2>
+      <p>
+        At Sundari Silks, the past and present intertwine, embracing our legacy while evolving with contemporary tastes.
+        Our exclusive collection stands as a testament to our dedication to the finesse of silk craftsmanship with a
+        touch of modernity and aged elegance.
+      </p>
+    </div>
+  </section>
+</div>
+
+<!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    // Initialize the current active index
+    let currentIndex = 0;
+
+    // Handle next button click
+    $('.timeline_navigation .next').on('click', function () {
+      moveTimeline('next');
+    });
+
+    // Handle prev button click
+    $('.timeline_navigation .prev').on('click', function () {
+      moveTimeline('prev');
+    });
+
+    function moveTimeline(direction) {
+      // Get all timeline items
+      const timelineItems = $('.timeline--item');
+
+      // Remove activeMe class from the current active item
+      timelineItems.eq(currentIndex).removeClass('activeMe');
+
+      // Calculate the new index based on the direction
+      if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % timelineItems.length;
+      } else {
+        currentIndex = (currentIndex - 1 + timelineItems.length) % timelineItems.length;
+      }
+
+      // Add activeMe class to the new active item
+      timelineItems.eq(currentIndex).addClass('activeMe');
+    }
+  });
+</script>

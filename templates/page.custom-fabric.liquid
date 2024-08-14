@@ -1,0 +1,700 @@
+{% comment %} <style>
+  .page-custom-form-product {
+    padding: 0px 14px;
+  }
+  .steps-navigation {
+    display: none;
+  }
+  #custom-shirt-form h2 {
+    font-weight: 400;
+  }
+
+  .accordion--wrapper {
+    display: flex;
+    gap: 10px;
+    overflow: scroll;
+  }
+  .accordion--wrapper label {
+    width: 120px;
+    height: 120px;
+    display: inline-block;
+  }
+
+  .accordion--wrapper div img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .step input[type='radio']:checked + label {
+    border: 2px solid #1b5d31;
+    /* background-color: #1b5d31; */
+  }
+
+  .input-radio-label-circle input[type='radio'],
+  .step.step-buttons input[type='radio'] {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #2c2c2c;
+    position: static;
+    vertical-align: bottom;
+    border-radius: 50%;
+  }
+  .input-radio-label-circle input[type='radio']:checked,
+  .step.step-buttons input[type='radio']:checked {
+    background: #1b5d31;
+  }
+  .step .step-button-list {
+    display: block;
+    padding: 8px 4px;
+    background: #fff;
+    width: 100%;
+  }
+  .step button.prev-btn,
+  .step button.next-btn {
+    padding: 12px 16px;
+    border: 1px solid rgba(27, 93, 49, 0.8);
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+    border-radius: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 130px;
+    max-width: 100%;
+    background: rgba(27, 93, 49, 0.8);
+  }
+  .step button.prev-btn:hover,
+  .step button.next-btn:hover {
+    background: rgba(27, 93, 49, 1);
+    border-color: rgba(27, 93, 49, 1);
+  }
+
+  #full-image-view {
+    display: none;
+  }
+
+  .page-custom-product-and-type {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 120;
+    box-shadow: 0 0 9px #0000001f;
+    transition: transform 0.6s;
+  }
+
+  @media (min-width: 768px) {
+    .page-custom-form-product {
+      /* max-height: calc(100vh - 38px - 128px - 40px); */
+      /* overflow: hidden; */
+      padding-top: 40px;
+      margin: 0 auto;
+      display: grid;
+      gap: 20px;
+      justify-content: center;
+      grid-template-columns: 188px 300px 378px;
+    }
+    .steps-navigation {
+      display: block;
+    }
+    .steps-navigation ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .step-nav {
+      margin: 0 8px;
+      padding: 8px;
+      border-bottom: 1px solid #4a4a4a;
+      color: #4a4a4a;
+      cursor: pointer;
+    }
+    .step-nav.active {
+      background-color: #1b5d31;
+      color: #fff;
+    }
+
+    .accordion--wrapper {
+      flex-direction: column;
+      max-height: 460px;
+      padding-bottom: 38px;
+      overflow: scroll;
+    }
+
+    .step .step-button-list {
+      position: absolute;
+      bottom: 0;
+      left: 0px;
+      right: 0px;
+      width: 100%;
+    }
+
+    .step {
+      position: relative;
+    }
+    .step h2 {
+      display: none;
+    }
+    .step label {
+      width: 264px;
+      height: auto;
+      border: 2px solid transparent;
+      margin-bottom: 10px;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .step label img {
+      width: 264px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    #full-image-view {
+      display: block;
+      width: 378px;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+</style>
+
+<div class="page-custom-form-product">
+  <div class="steps-navigation">
+    <ul>
+      <li class="step-nav active" data-step="1">Fabric</li>
+      <li class="step-nav" data-step="2">Body Fit</li>
+      <li class="step-nav" data-step="3">Sleeve</li>
+      <li class="step-nav" data-step="4">Collar</li>
+      <li class="step-nav" data-step="5">Shoulder Epaulette</li>
+      <li class="step-nav" data-step="6">Pocket</li>
+      <li class="step-nav" data-step="7">Neck Placket</li>
+      <li class="step-nav" data-step="8">Cuff</li>
+      <li class="step-nav" data-step="9">Bottom Cut</li>
+      <li class="step-nav" data-step="10">Summary</li>
+      <!-- Add list items for other steps -->
+    </ul>
+  </div>
+
+  <div id="custom-shirt-form">
+    {% comment %} <form id="custom-shirt-form" method="post" action="#"> {% endcomment %}
+    <div class="step step-fabric">
+      <h2>Fabric</h2>
+      <div class="accordion--wrapper">
+        {% for product in collections['custom-fabric'].products %}
+          {% assign first_image_url = product.images.first.src | img_url: 'medium' %}
+          {% assign title_without_space = product.title | replace: ' ', '' %}
+
+          <div>
+            <input type="radio" id="{{title_without_space}}" name="fabric" value="{{product.title}}">
+            <label for="{{title_without_space}}"> <img src="{{ first_image_url }}" alt="{{ product.title }}"></label>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="step-button-list">
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Body Fit -->
+    <div class="step step-body-fit" style="display: none;">
+      <h2>Body Fit</h2>
+      <!-- Input fields for body fit -->
+
+      <div class="accordion--wrapper">
+        <input type="radio" id="loose-cut" name="body-fit" value="Loose Cut / Comfort">
+        <label for="loose-cut">
+          <img src="{{'short-kurta-image-looseCut.png' | asset_url}}" alt="Loose Cut / Comfort">
+        </label>
+        {% comment %}
+                    <input type="radio" id="non-loose-cut" name="body-fit" value="Non-Loose Cut / Slim">
+                    <label for="non-loose-cut">
+          <img src="{{'short-kurta-image-nonLooseCut.png' | asset_url}}" alt="Non-Loose Cut / Slim"></label>
+        {% endcomment %}
+      </div>
+
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Sleeve -->
+    <div class="step step-sleeve" style="display: none;">
+      <h2>Sleeve</h2>
+      <!-- Input fields for sleeve -->
+
+      <div class="accordion--wrapper">
+        <input type="radio" id="fullSleeves" name="sleeve-type" value="Full Sleeves">
+        <label for="fullSleeves">
+          <img src="{{'short-kurta-image-fullSleeves.png' | asset_url}}" alt="Full Sleeves">
+        </label>
+        <input type="radio" id="halfSleeves" name="sleeve-type" value="Half Sleeves">
+        <label for="halfSleeves">
+          <img src="{{'short-kurta-image-halfSleeves.png' | asset_url}}" alt="Half Sleeves">
+        </label>
+        {% comment %}
+          <input type="radio" id="rollUpSleeves" name="sleeve-type" value="Roll-up Sleeves">
+          <label for="rollUpSleeves">
+            <img src="{{'short-kurta-image-rollUpSleeves.png' | asset_url}}" alt="Roll-up Sleeves">
+            </label>
+        {% endcomment %}
+      </div>
+
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Collar -->
+    <div class="step step-collar" style="display: none;">
+      <h2>Collar</h2>
+      <!-- Input fields for collar -->
+
+      <div class="accordion--wrapper">
+        <input type="radio" id="mandarinCollar" name="collar-type" value="Mandarin Collar">
+        <label for="mandarinCollar">
+          <img src="{{'short-kurta-image-mandarinCollar.png' | asset_url}}" alt="Mandarin Collar">
+        </label>
+        {% comment %}
+          <input type="radio" id="roundNeck" name="collar-type" value="Round Neck">
+        <label for="roundNeck"> <img src="{{'short-kurta-image-roundNeck.png' | asset_url}}" alt="Round Neck"></label>
+        {% endcomment %}
+        <input type="radio" id="shirtCollar" name="collar-type" value="Shirt Collar">
+        <label for="shirtCollar">
+          <img src="{{'short-kurta-image-shirtCollar.png' | asset_url}}" alt="Shirt Collar">
+        </label>
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Shoulder Epaulette -->
+    <div class="step step-shoulder-epaulette" style="display: none;">
+      <h2>Shoulder Epaulette</h2>
+      <!-- Input fields for shoulder epaulette -->
+
+      <div class="accordion--wrapper">
+        <input
+          type="radio"
+          id="withoutShoulderEpaulette"
+          name="shoulder-epaulette-type"
+          value="Without Shoulder Epaulette"
+        >
+        <label for="withoutShoulderEpaulette">
+          <img src="{{'short-kurta-image-withoutShoulderEpaulette.png' | asset_url}}" alt="Without Shoulder Epaulette">
+        </label>
+        {% comment %} <input type="radio" id="withShoulderEpaulette" name="shoulder-epaulette-type" value=" Shoulder Epaulette">
+        <label for="withShoulderEpaulette">
+          <img src="{{'short-kurta-image-withShoulderEpaulette.png' | asset_url}}" alt="With Shoulder Epaulette"
+        ></label> {% endcomment %}
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 6: Pocket -->
+    <div class="step step-pocket" style="display: none;">
+      <h2>Pocket</h2>
+      <!-- Input fields for pocket -->
+
+      <div class="accordion--wrapper">
+        <input type="radio" id="pocketWith" name="pocket-type" value="With Pocket">
+        <label for="pocketWith">
+          <img src="{{'short-kurta-image-pocketWith.png' | asset_url}}" alt="With Pocket"
+        ></label>
+        <input type="radio" id="pocketWithout" name="pocket-type" value="Without Pocket">
+        <label for="pocketWithout">
+          <img src="{{'short-kurta-image-pocketWithout.png' | asset_url}}" alt="Without Pocket">
+        </label>
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 7: Neck Placket -->
+    <div class="step step-neck-placket" style="display: none;">
+      <h2>Neck Placket</h2>
+      <!-- Input fields for neck placket -->
+
+      <div class="accordion--wrapper">
+        <input type="radio" id="vfrontlacket" name="neck-placket-type" value="V-front Placket">
+        <label for="vfrontlacket">
+          <img src="{{'short-kurta-image-vfrontlacket.png' | asset_url}}" alt="V-front Placket">
+        </label>
+        {% comment %} <input type="radio" id="squarefrontplacket" name="neck-placket-type" value="Square Front Placket">
+        <label for="squarefrontplacket">
+          <img src="{{'short-kurta-image-squarefrontplacket.png' | asset_url}}" alt="Square Front Placket">
+        </label> {% endcomment %}
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 8: Cuff -->
+    <div class="step step-cuff" style="display: none;">
+      <h2>Cuff</h2>
+      <!-- Input fields for cuff -->
+
+      <div class="accordion--wrapper">
+        <input type="radio" id="cuffWithOut" name="cuff-type" value="Without Cuff">
+        <label for="cuffWithOut">
+          <img src="{{'short-kurta-image-cuffWithOut.png' | asset_url}}" alt="Without Cuff">
+        </label>
+        {% comment %} <input type="radio" id="withcuff" name="cuff-type" value="With Cuff">
+        <label for="withcuff"> <img src="{{'short-kurta-image-cuffWith.png' | asset_url}}" alt="With Cuff"></label> {% endcomment %}
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 9: Bottom Cut -->
+    <div class="step step-bottom-cut" style="display: none;">
+      <h2>Bottom Cut</h2>
+      <!-- Input fields for bottom cut -->
+
+      <div class="accordion--wrapper">
+        <input type="radio" id="straightCut" name="bottom-cut-type" value="Straight Cut">
+        <label for="straightCut">
+          <img src="{{'short-kurta-image-straightCut.png' | asset_url}}" alt="Straight Cut">
+        </label>
+        <input type="radio" id="roundCut" name="bottom-cut-type" value="Round Cut">
+        <label for="roundCut"> <img src="{{'short-kurta-image-roundCut.png' | asset_url}}" alt="Round Cut"></label>
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <div class="step step-summary" style="display: none;">
+      <h2>Summary</h2>
+      <!-- Show selected options summary -->
+      <div class="summary-section"></div>
+
+      <!-- Buy Now Button -->
+      {%- form 'product', product, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+
+        <div class="product-form__buttons">
+          <br>
+          <div class="button-add-to-cart">
+            {% assign not_in_cart = true %}
+            {% for item in cart.items %}
+              <div class="mb-3 d-none" hidden>
+                <hr>
+                {{ item.variant_id }}
+                <hr>
+                {{ product.selected_or_first_available_variant.id }}
+              </div>
+              {% if item.variant_id == product.selected_or_first_available_variant.id %}
+                {% assign not_in_cart = false %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+
+            <input type="number" disable class="form-control" name="quantity" id="quantity" value="1" min="1" max="1">
+            <input
+              type="text"
+              disable
+              class="jselecteValue"
+              name="id"
+              value="{{ product.selected_or_first_available_variant.id }}"
+              {% if product.selected_or_first_available_variant.available == false %}
+                disabled
+              {% endif %}
+            >
+
+            <button
+              type="submit"
+              name="add"
+              class=" product-form__submit custom-shopme product-form__submit button button--primary an-horizontal-shaking button-text-change"
+              data-status-button="{%- if product.selected_or_first_available_variant.available -%} add-to-cart {%- else -%} soldout {%- endif -%}"
+              {% if product.selected_or_first_available_variant.available == false %}
+                Disabled
+              {% endif %}
+              style="
+                display:
+                {% if not_in_cart %}
+                 block
+                {% else %}
+                none
+                {% endif %}
+              "
+            >
+              <span>
+                {%- if product.selected_or_first_available_variant.available -%}
+                  ADD TO CART
+                {%- else -%}
+                  SOLD OUT
+                {%- endif -%}
+              </span>
+            </button>
+          </div>
+        </div>
+      {%- endform -%}
+
+      <!-- end product form -->
+    </div>
+  </div>
+  {% comment %} </form> {% endcomment %}
+
+  <div id="full-image-view"></div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    var totalSteps = $('.step').length;
+    var $stepNavigation = $('.steps-navigation');
+
+    function showStep(step) {
+      $('.step').hide();
+      $('.step:nth-child(' + step + ')').show();
+      $stepNavigation.find('.step-nav').removeClass('active');
+      $stepNavigation.find('.step-nav[data-step="' + step + '"]').addClass('active');
+
+      console.log('currnet step: ' + step + ' :: ' + typeof step);
+      console.log('totalSteps step: ' + totalSteps + ' :: ' + typeof totalSteps);
+      // Display summary if reaching step-summary
+      if (step == 10) {
+        console.log('summary');
+        $('.custom-shopme').prop('disabled', false);
+        displaySummary();
+      } else {
+        console.log('else me ;()');
+      }
+    }
+
+    // Function to handle cloning the selected image
+    function cloneSelectedImage($selectedImage) {
+      var $clonedImage = $selectedImage.clone(); // Clone the selected image
+      $('#full-image-view').empty().append($clonedImage); // Append the cloned image to the full-image-view div
+    }
+
+    // Event listener for when an image label is clicked
+    $('label img').click(function () {
+      var $selectedImage = $(this); // Get the selected image
+      cloneSelectedImage($selectedImage); // Clone and display the selected image
+    });
+
+    function validateFabricStep() {
+      return $('#fabric').val() !== '';
+    }
+
+    function validateBodyFitStep() {
+      return $('input[name="body-fit"]:checked').length > 0;
+    }
+
+    function validateSleeveStep() {
+      return $('input[name="sleeve-type"]:checked').length > 0;
+    }
+
+    function validateCollarStep() {
+      return $('input[name="collar-type"]:checked').length > 0;
+    }
+
+    function validateShoulderEpauletteStep() {
+      return $('input[name="shoulder-epaulette-type"]:checked').length > 0;
+    }
+
+    function validatePocketStep() {
+      return $('input[name="pocket-type"]:checked').length > 0;
+    }
+
+    function validateNeckPlacketStep() {
+      return $('input[name="neck-placket-type"]:checked').length > 0;
+    }
+
+    function validateCuffStep() {
+      return $('input[name="cuff-type"]:checked').length > 0;
+    }
+
+    function validateBottomCutStep() {
+      return $('input[name="bottom-cut-type"]:checked').length > 0;
+    }
+
+    function validateStep(step) {
+      switch (step) {
+        case 1:
+          return validateFabricStep();
+        case 2:
+          return validateBodyFitStep();
+        case 3:
+          return validateSleeveStep();
+        case 4:
+          return validateCollarStep();
+        case 5:
+          return validateShoulderEpauletteStep();
+        case 6:
+          return validatePocketStep();
+        case 7:
+          return validateNeckPlacketStep();
+        case 8:
+          return validateCuffStep();
+        case totalSteps:
+          return validateBottomCutStep();
+        default:
+          return true;
+      }
+    }
+
+    // Function to display the selected options in the summary section
+    function displaySummary() {
+      var summarySection = $('.step-summary .summary-section');
+      summarySection.empty(); // Clear previous summary content
+
+      console.log('yes');
+
+      $('.step:lt(' + totalSteps + ')').each(function () {
+        var stepTitle = $(this).find('h2').text();
+        var selectedOption = $(this).find('input[type="radio"]:checked').val();
+
+        console.log('selectedOption:' + selectedOption);
+
+        if (selectedOption) {
+          summarySection.append(
+            '<p>' +
+              stepTitle +
+              ': <span>' +
+              selectedOption +
+              '</span> <input type="hidden" id="Submit_' +
+              stepTitle +
+              '" name="properties[' +
+              stepTitle +
+              ']" value="' +
+              selectedOption +
+              '" /></p>'
+          );
+        }
+      });
+    }
+
+    $('.step-nav').click(function () {
+      var step = $(this).data('step');
+      if (validateStep(step)) {
+        showStep(step);
+      } else {
+        alert('Please select an option before proceeding.');
+      }
+    });
+
+    $('.next-btn').click(function () {
+      var currentStep = $('.step:visible').index() + 1;
+      if (!validateStep(currentStep)) {
+        alert('Please select an option before proceeding.');
+        return;
+      }
+
+      var nextStep = currentStep + 1;
+      showStep(nextStep);
+    });
+
+    $('.prev-btn').click(function () {
+      var currentStep = $('.step:visible').index() + 1;
+      var prevStep = currentStep - 1;
+      showStep(prevStep);
+    });
+
+    $('form').submit(function (e) {
+      var currentStep = $('.step:visible').index() + 1;
+      if (!validateStep(currentStep)) {
+        e.preventDefault();
+        alert('Please select an option before proceeding.');
+      } else {
+        alert('Form submitted successfully!');
+        // Uncomment the following line to submit the form
+        // $(this).submit();
+      }
+    });
+
+    showStep(1); // Show the initial step
+  });
+
+  // // add to cart ajax
+  // $(".product-form__buttons .product-form__submit")
+  // .unbind()
+  // .click(function (e) {
+  //   e.preventDefault();
+  //   let dataItem = $(".jselecteValue").val();
+
+  //   let formData = {
+  //     items: [
+  //       {
+  //         id: dataItem,
+  //         quantity: 1,
+  //       },
+  //     ],
+  //   };
+
+  //   fetch(window.Shopify.routes.root + "cart/add.js", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(formData),
+  //   })
+
+  //   // let addToCartform = jQuery.post(window.Shopify.routes.root + 'cart/add.js', $('form[action$="/cart/add"]').serialize());
+  //   // console.log('addToCartform:: ' + JSON.stringify(addToCartform));
+
+  //   // let addToCartForm = document.querySelector('form[action$="/cart/add"]');
+  //   // let formData = new FormData(addToCartForm);
+  //   // console.log(formData);
+  //   // fetch(window.Shopify.routes.root + "cart/add.js", {
+  //   //   method: "POST",
+  //   //   body: formData,
+  //   // })
+  //     .then((response) => {
+  //       // $(".product-form__submit").hide();
+  //       // $(".product-form__viewcart").show();
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       update_cart();
+  //       let cartData = JSON.stringify(data);
+  //       let pushmyObj = JSON.parse(cartData);
+  //       let pushDataItem = pushmyObj.items[0];
+  //       var cart_list = [];
+  //       cart_list.push(
+  //         '<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">' +
+  //           '<div class="toast-body" >' +
+  //           '<img src="' +
+  //           pushDataItem.featured_image.url +
+  //           '&width=48" alt="' +
+  //           pushDataItem.featured_image.alt +
+  //           '" width="48" height="64">' +
+  //           "<div>" +
+  //           "<p>" +
+  //           pushDataItem.title +
+  //           " is added to bag  </p>" +
+  //           "</div>" +
+  //           "</div>" +
+  //           "</div>"
+  //       );
+  //       $(".productToaster")
+  //         .html(cart_list.join(""))
+  //         .delay(2000)
+  //         .fadeOut("slow");
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // });
+</script> {% endcomment %}

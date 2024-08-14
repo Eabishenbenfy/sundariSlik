@@ -1,0 +1,614 @@
+<style>
+  .template-page recently-viewed-popup#halo-recently-viewed-popup {
+    display: none;
+  }
+
+  .section__shopby--title,
+  .section__appointment--title {
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 43px;
+    text-align: center;
+    color: #202020;
+    padding: 0 0 24px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .section__shopby--title,
+    .section__appointment--title {
+      font-family: 'Playfair Display';
+      font-weight: 700;
+      font-size: 32px;
+    }
+  }
+
+  p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #202020;
+    margin: 0 auto;
+    padding: 0 0 24px;
+  }
+
+  a.button--custom {
+    display: inline-block;
+    padding: 16px 32px;
+    background: #f7db69;
+    border-radius: 20px 20px 0px 20px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.25em;
+    color: #000000;
+  }
+
+  a.button--custom:hover {
+    background: #996423;
+    border-radius: 20px 0px 20px 20px;
+    color: #fff;
+  }
+
+  .padding\:top\:56 {
+    padding-top: 56px;
+  }
+
+  .padding\:bottom\:56 {
+    padding-bottom: 56px;
+  }
+
+  .padding\:top\:40 {
+    padding-top: 40px;
+  }
+
+  .padding\:bottom\:40 {
+    padding-bottom: 40px;
+  }
+
+  .text\:center {
+    text-align: center;
+  }
+
+  .section__banner img {
+    max-width: 100%;
+    width: auto;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  .page__wedding {
+    transition: all 0.2s ease;
+    background-color: #fffae4;
+  }
+
+  .border\:radius\:20 {
+    border-radius: 20px;
+  }
+
+  .container__box {
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .section__main--collection.card\:by\:1 {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    .section__main--collection.card\:by\:1 {
+      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .collection__list--card {
+    position: relative;
+  }
+
+  .collection__list--content {
+    border-radius: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+
+  .collection__list--card:hover .collection__list--content {
+    display: flex;
+  }
+
+  .collection__list--title {
+    font-family: 'Playfair Display';
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 53px;
+    text-align: center;
+    color: #996423;
+    margin-bottom: 8px;
+  }
+
+  .button--custom--text {
+    padding: 16px 32px;
+    display: inline-block;
+    background: #f7db69;
+    border-radius: 20px 20px 0px 20px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.25em;
+    color: #000000;
+  }
+  .button--custom--text:hover{
+    background: #996423;
+    border-radius: 20px 0px 20px 20px;
+    color: #fff;
+}
+
+  .section__main--collection img {
+    width: auto;
+    height: auto;
+  }
+
+  .section__shopby--category {
+    background-color: #ffefba;
+  }
+
+  .section__appointment br {
+    display: none;
+  }
+
+  .section__appointment .section__appointment--title,
+  .section__bride--maid .section__appointment--title {
+    padding-bottom: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .section__appointment br {
+      display: block;
+    }
+  }
+
+  .category__lists {
+    padding-top: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  @media (min-width: 768px) {
+    .category__lists {
+      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .category__list--image img {
+    width: auto;
+    height: auto;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
+  .category__list--image .category__list--hover {
+    display: none;
+  }
+
+  .category__list--image:hover .category__list--normal {
+    display: none;
+  }
+
+  .category__list--image:hover .category__list--hover {
+    display: block;
+  }
+
+  .category__list--title {
+    display: block;
+    padding-top: 16px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #202020;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .category__list--title {
+      font-size: 20px;
+    }
+  }
+
+  .section__bride--maid__detail,
+  .section__bride--maid {
+    position: relative;
+  }
+
+  .section__bride--maid img {
+    height: 514px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 25px 0px 25px 25px;
+  }
+
+  .section__bride--maid--text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  @media (min-width: 768px) {
+    .section__bride--maid--text {
+      position: absolute;
+      right: 40px;
+      max-width: 426px;
+      top: 0;
+      left: initial;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .section__bride--maid--text h2,
+  .section__bride--maid--text p {
+    color: #fff;
+  }
+
+  .bride__gallery--items {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+  }
+
+  .bride__gallery--items img {
+    border-radius: 25px;
+    min-width: 240px;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .bride__gallery--items {
+        display: flex;
+        gap: 20px;
+        overflow-x: scroll;
+      }
+    .bride__gallery--items img {
+      border-radius: 25px;
+      min-width: 296px;
+      height: initial;
+    }
+  }
+
+  .section__blog--area {
+    background-color: #ffefba;
+    margin-bottom: -80px;
+    padding-bottom: 60px;
+  }
+
+  .blog-feed-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+  }
+
+  .blog-feed-card {
+    flex: 1 0 240px;
+  }
+
+  @media (min-width: 768px) {
+    .blog-feed-container {
+      gap: 20px;
+    }
+    .blog-feed-card {
+      flex: 1 0 calc((100% / 12) * 4);
+    }
+  }
+
+  .blog-feed-container img {
+    border-radius: 0px 30px 30px 30px;
+    padding: 0 0 20px;
+  }
+
+  .blog-feed-card-title {
+    padding: 16px 0 8px;
+    margin: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #202020;
+    height: 44px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .blog-feed-card-content {
+    padding: 0 0 20px;
+    margin: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: left;
+    line-height: 20px;
+    color: #202020;
+  }
+
+  .blog-feed-card-meta {
+    padding: 0 0 20px;
+    margin: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #202020;
+    text-align: left;
+  }
+
+  .blog-feed-card-cta {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+    text-decoration-line: underline;
+    color: #202020;
+  }
+</style>
+<div class="page__wedding">
+  <section class="section__banner">
+    <picture>
+      <source
+        srcset="{{ 'sundarisilks-page-wedding-banner-desktop.png' | asset_url }}"
+        media="(min-width: 768px)"
+      >
+      <img src="{{ 'sundarisilks-page-wedding-banner-mobile.png' | asset_url }}" alt="" width="1440" height="550">
+    </picture>
+  </section>
+  <section class="container__box card:by:1 padding:top:56 padding:bottom:56 section__main--collection">
+    <div class="collection__list--card">
+      <a href="https://www.sundarisilks.com/collections/wedding-saree-collection">
+        <img
+          class="border:radius:20"
+          src="{{ 'sundarisilks-page-wedding-female.png' | asset_url }}"
+          alt=""
+          width="650"
+          height="800"
+        >
+        <div class="collection__list--content">
+          <div class="collection__list--title">Bridal Collection</div>
+          <span class="button--custom--text"> VIEW ALL COLLECTIONS </span>
+        </div>
+      </a>
+    </div>
+    <div class="collection__list--card">
+      <a href="https://www.sundarisilks.com/collections/grooms-collection">
+        <img
+          class="border:radius:20"
+          src="{{ 'sundarisilks-page-wedding-male.png' | asset_url }}"
+          alt=""
+          width="650"
+          height="800"
+        >
+        <div class="collection__list--content">
+          <div class="collection__list--title">Groom Collection</div>
+          <span class="button--custom--text"> VIEW ALL COLLECTIONS </span>
+        </div>
+      </a>
+    </div>
+  </section>
+  <section class="container__box section__appointment padding:bottom:56 text:center">
+    <h2 class="section__appointment--title">Appointment & Inquires</h2>
+    <p>
+      To schedule a virtual appointment, click below and our bridal consultant will contact you <br>
+      within 24 hours or get in touch with us for any other queries.
+    </p>
+    <a href="https://calendly.com/sundarisilks/30min" target="_blank" class="button--custom">VIRTUAL SHOPPING</a>
+  </section>
+  <section class="section__shopby--category padding:top:40 padding:bottom:40">
+    <h2 class="section__shopby--title">Shop By Category</h2>
+    <div class="container__box category__lists">
+      <a href="https://www.sundarisilks.com/collections/traditional-sarees" class="category__list">
+        <div class="category__list--image">
+          <img
+            src="{{'sundarisilks-page-wedding-traditional-saree.png' | asset_url }}"
+            alt=""
+            class="category__list--normal"
+            width="315"
+            height="400"
+          >
+          <img
+            src="{{'sundarisilks-page-wedding-traditional-saree-hover.png' | asset_url }}"
+            alt=""
+            class="category__list--hover"
+            width="315"
+            height="400"
+          >
+        </div>
+        <span class="category__list--title">Traditional Sarees</span>
+      </a>
+      <a href="https://www.sundarisilks.com/collections/jacquard-sarees" class="category__list">
+        <div class="category__list--image">
+          <img
+            src="{{'sundarisilks-page-wedding-jacquard.png' | asset_url }}"
+            alt=""
+            class="category__list--normal"
+            width="315"
+            height="400"
+          >
+          <img
+            src="{{'sundarisilks-page-wedding-jacquard-hover.png' | asset_url }}"
+            alt=""
+            class="category__list--hover"
+            width="315"
+            height="400"
+          >
+        </div>
+        <span class="category__list--title">Jacquard</span>
+      </a>
+      <a href="https://www.sundarisilks.com/collections/fancy-silk-sarees" class="category__list">
+        <div class="category__list--image">
+          <img
+            src="{{'sundarisilks-page-wedding-fancy-kanchivaram.png' | asset_url }}"
+            alt=""
+            class="category__list--normal"
+            width="315"
+            height="400"
+          >
+          <img
+            src="{{'sundarisilks-page-wedding-fancy-kanchivaram-hover.png' | asset_url }}"
+            alt=""
+            class="category__list--hover"
+            width="315"
+            height="400"
+          >
+        </div>
+        <span class="category__list--title">Fancy Kanjivarams</span>
+      </a>
+      <a href="https://www.sundarisilks.com/collections/buttas-buttis" class="category__list">
+        <div class="category__list--image">
+          <img
+            src="{{'sundarisilks-page-wedding-butta.png' | asset_url }}"
+            alt=""
+            class="category__list--normal"
+            width="315"
+            height="400"
+          >
+          <img
+            src="{{'sundarisilks-page-wedding-butta-hover.png' | asset_url }}"
+            alt=""
+            class="category__list--hover"
+            width="315"
+            height="400"
+          >
+        </div>
+        <span class="category__list--title">Buttas & Buttis</span>
+      </a>
+    </div>
+  </section>
+  <section class="section__bride--maid container__box  padding:top:40  padding:bottom:40">
+    <div class="section__bride--maid__detail">
+      <img src="{{'sundarisilks-page-wedding-bride-maid.png' | asset_url }}" alt="" width="1320" height="514">
+      <div class="section__bride--maid--text">
+        <h2 class="section__appointment--title">The Bridesmaid Diary
+        </h2>
+        <p>
+          Discover our Kanchipuram silk sarees for bridesmaids, with a blend of tradition and elegance highlighting every bridesmaid's beauty.
+        </p>
+        <a href="https://www.sundarisilks.com/collections/wedding-saree-collection" class="button--custom">VIEW ALL COLLECTIONS</a>
+      </div>
+    </div>
+  </section>
+  <section class="section__bride--gallery container__box padding:bottom:40">
+    <h2 class="section__appointment--title">Brides of Sundari</h2>
+    <ul class="bride__gallery--items list-unstyled">
+      <li class="bride__gallery--item">
+        <img src="{{'sundarisilks-page-wedding-bride-1.png' | asset_url }}" alt="" width="315" height="394">
+      </li>
+      <li class="bride__gallery--item">
+        <img src="{{'sundarisilks-page-wedding-bride-2.png' | asset_url }}" alt="" width="315" height="394">
+      </li>
+      <li class="bride__gallery--item">
+        <img src="{{'sundarisilks-page-wedding-bride-3.png' | asset_url }}" alt="" width="315" height="394">
+      </li>
+      <li class="bride__gallery--item">
+        <img src="{{'sundarisilks-page-wedding-bride-4.png' | asset_url }}" alt="" width="315" height="394">
+      </li>
+      <li class="bride__gallery--item">
+        <img src="{{'sundarisilks-page-wedding-bride-5.png' | asset_url }}" alt="" width="315" height="394">
+      </li>
+      <li class="bride__gallery--item">
+        <img src="{{'sundarisilks-page-wedding-bride-6.png' | asset_url }}" alt="" width="315" height="394">
+      </li>
+      <li class="bride__gallery--item">
+        <img src="{{'sundarisilks-page-wedding-bride-7.png' | asset_url }}" alt="" width="315" height="394">
+      </li>
+    </ul>
+  </section>
+
+  <section class="section__blog--area padding:top:40 padding:bottom:40">
+    <div class="section-content container__box">
+      <h2 class="section__appointment--title">Wedding Blogs</h2>
+      <div class="blog-feed-container">
+        {% assign blog = blogs.article %}
+        {% for article in blog.articles limit: 4 %}
+          <div class="blog-feed-card">
+            <div class="blog-feed-card-wrapper">
+              <a href=" {{ article.url }}" class="blog-feed-card-link">
+                {% if article.image %}
+                  <img
+                    id="Image-{{ article.id }}"
+                    loading="lazy"
+                    class="{{ article_class }} blog-feed-card-image"
+                    src="{{article.image.src | image_url: width:404, height: 296, crop: 'top'  }}"
+                    alt="{{ article.image.alt | escape }}"
+                  >
+                {% endif %}
+                <h3 class="blog-feed-card-title">
+                  {{ article.title | escape }}
+                </h3>
+                <p class="blog-feed-card-meta">
+                  By
+                  <span>{{ article.author }}</span>
+                  <span>{{ article.published_at | date: '%b %d, %Y' }}</span>
+                </p>
+                <p class="blog-feed-card-content">
+                  {% if article.excerpt.size > 0 %}
+                    {{ article.excerpt | strip_html | truncate: 100 }}
+                  {% else %}
+                    {{ article.content | strip_html | truncate: 100 }}
+                  {% endif %}
+                </p>
+                <p class="blog-feed-card-cta">View Details</p>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>

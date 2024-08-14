@@ -1,0 +1,847 @@
+<style>
+  .page-custom-form-product {
+  padding: 0px 14px;
+}
+
+.steps-navigation {
+  display: none;
+}
+
+#custom-shirt-form h2 {
+  font-weight: 400;
+}
+
+.accordion--wrapper {
+  display: flex;
+  gap: 10px;
+  overflow: scroll;
+}
+
+.accordion--wrapper label {
+  width: 120px;
+  height: 120px;
+  display: inline-block;
+}
+
+.accordion--wrapper div img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+.step input[type='radio']:checked+label {
+  border: 2px solid #1b5d31;
+  /* background-color: #1b5d31; */
+}
+
+.input-radio-label-circle input[type='radio'],
+.step.step-buttons input[type='radio'] {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #2c2c2c;
+  position: static;
+  vertical-align: bottom;
+  border-radius: 50%;
+}
+
+.input-radio-label-circle input[type='radio']:checked,
+.step.step-buttons input[type='radio']:checked {
+  background: #1b5d31;
+}
+
+.step .step-button-list {
+  display: block;
+  padding: 8px 4px;
+  background: #fff;
+  width: 100%;
+}
+
+.step button.prev-btn,
+.step button.next-btn {
+  padding: 12px 16px;
+  border: 1px solid rgba(27, 93, 49, 0.8);
+  color: #fff;
+  font-size: 14px;
+  display: inline-block;
+  border-radius: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 130px;
+  max-width: 100%;
+  background: rgba(27, 93, 49, 0.8);
+}
+
+.step button.prev-btn:hover,
+.step button.next-btn:hover {
+  background: rgba(27, 93, 49, 1);
+  border-color: rgba(27, 93, 49, 1);
+}
+
+#full-image-view {
+  display: none;
+}
+
+.page-custom-product-and-type {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 120;
+  box-shadow: 0 0 9px #0000001f;
+  transition: transform 0.6s;
+}
+
+form input#quantity,
+form input#productID {
+  display: none;
+}
+
+form button.product-form__submit {
+  margin-top: 14px;
+}
+
+@media (min-width: 768px) {
+  .page-custom-form-product {
+    /* max-height: calc(100vh - 38px - 128px - 40px); */
+    /* overflow: hidden; */
+    padding-top: 40px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+    justify-content: center;
+    grid-template-columns: 188px 300px 378px;
+  }
+
+  .steps-navigation {
+    display: block;
+  }
+
+  .steps-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .step-nav {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 8px;
+    padding: 8px;
+    border-bottom: 1px solid #333333;
+    color: #333333;
+    cursor: pointer;
+  }
+
+  .step-nav.active {
+    background-color: #1b5d31;
+    color: #fff;
+  }
+
+  .accordion--wrapper {
+    flex-direction: column;
+    max-height: 460px;
+    min-height: 460px;
+    padding-bottom: 88px;
+    overflow: scroll;
+  }
+
+  .step .step-button-list {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+  }
+
+  .step {
+    position: relative;
+  }
+
+  .step h2 {
+    display: none;
+  }
+
+  .step label {
+    width: 264px;
+    height: auto;
+    border: 2px solid transparent;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .step label img {
+    width: 264px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  #full-image-view {
+    display: block;
+    width: 378px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  #full-image-view img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.summary-section p:last-child {
+  display: none;
+}
+
+#custom-shirt-form {
+  border-right: 1px solid #1b5d31;
+}
+</style>
+
+<div class="page-custom-form-product">
+  <div class="steps-navigation">
+    <ul>
+      <li class="step-nav active" data-step="1">Fabric</li>
+      <li class="step-nav" data-step="2">Body Fit</li>
+      <li class="step-nav" data-step="3">Sleeve</li>
+      <li class="step-nav" data-step="4">Collar</li>
+      <li class="step-nav" data-step="5">Shoulder Epaulette</li>
+      <li class="step-nav" data-step="6">Pocket</li>
+      <li class="step-nav" data-step="7">Neck Placket</li>
+      <li class="step-nav" data-step="8">Cuff</li>
+      <li class="step-nav" data-step="9">Bottom Cut</li>
+      <li class="step-nav" data-step="10">Summary</li>
+      <!-- Add list items for other steps -->
+    </ul>
+  </div>
+
+  <div id="custom-shirt-form">
+    <div class="step step-fabric">
+      <h2>Fabric</h2>
+      <div class="accordion--wrapper">
+        {% for product in collections['custom-fabric'].products %}
+        {% assign first_image_url = product.images.first.src | img_url: 'medium' %}
+        {% assign title_without_space = product.title | replace: ' ', '' %}
+
+        <div>
+          <input type="radio" id="{{title_without_space}}" name="fabric" value="{{product.title}}">
+          <label for="{{title_without_space}}"><img src="{{ first_image_url }}" alt="{{ product.title }}"></label>
+          <span class="fabric-id" hidden>{{ product.selected_or_first_available_variant.id }}</span>
+          <span class="alankara-option-title fabric-title" style="font-size: 16px;">{{ product.title }} </span>
+          <span class="alankara-option-price fabric-price" style="font-size:14px">{{ product.price | money }}</span>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="step-button-list">
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Body Fit -->
+    <div class="step step-body-fit" style="display: none;">
+      <h2>Body Fit</h2>
+      <!-- Input fields for body fit -->
+
+      <div class="accordion--wrapper">
+          <div class="">
+        <input type="radio" id="loose-cut" name="body-fit" value="Loose Cut / Comfort">
+        <label for="loose-cut"><img src="{{'short-kurta-image-looseCut.png' | asset_url}}"
+            alt="Loose Cut / Comfort"></label>
+        <span class="alankara-option-title" style="font-size: 16px;">Loose Cut / Comfort </span>
+          </div>
+        {% comment %}
+        <input type="radio" id="non-loose-cut" name="body-fit" value="Non-Loose Cut / Slim">
+        <label for="non-loose-cut"><img src="{{'short-kurta-image-nonLooseCut.png' | asset_url}}"
+            alt="Non-Loose Cut / Slim"></label>
+        {% endcomment %}
+      </div>
+
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Sleeve -->
+    <div class="step step-sleeve" style="display: none;">
+      <h2>Sleeve</h2>
+      <!-- Input fields for sleeve -->
+
+      <div class="accordion--wrapper">
+        
+          <div class="">
+        <input type="radio" id="fullSleeves" name="sleeve-type" value="Full Sleeves">
+        <label for="fullSleeves"><img src="{{'short-kurta-image-fullSleeves.png' | asset_url}}"
+            alt="Full Sleeves"></label>
+        <span class="alankara-option-title" style="font-size: 16px;"> Full Sleeves </span>
+          </div>
+        
+          <div class="">
+        <input type="radio" id="halfSleeves" name="sleeve-type" value="Half Sleeves">
+        <label for="halfSleeves"><img src="{{'short-kurta-image-halfSleeves.png' | asset_url}}"
+            alt="Half Sleeves"></label>
+        <span class="alankara-option-title" style="font-size: 16px;"> Half Sleeves </span>
+          </div>
+        {% comment %}
+        <input type="radio" id="rollUpSleeves" name="sleeve-type" value="Roll-up Sleeves">
+        <label for="rollUpSleeves"><img src="{{'short-kurta-image-rollUpSleeves.png' | asset_url}}"
+            alt="Roll-up Sleeves"></label>
+        {% endcomment %}
+      </div>
+
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Collar -->
+    <div class="step step-collar" style="display: none;">
+      <h2>Collar</h2>
+      <!-- Input fields for collar -->
+
+      <div class="accordion--wrapper">
+        
+          <div class="">
+        <input type="radio" id="mandarinCollar" name="collar-type" value="Mandarin Collar">
+        <label for="mandarinCollar"><img src="{{'short-kurta-image-mandarinCollar.png' | asset_url}}"
+            alt="Mandarin Collar"></label>
+        <span class="alankara-option-title" style="font-size: 16px;"> Mandarin Collar </span>
+          </div>
+        
+        {% comment %}
+        <input type="radio" id="roundNeck" name="collar-type" value="Round Neck">
+        <label for="roundNeck"><img src="{{'short-kurta-image-roundNeck.png' | asset_url}}" alt="Round Neck"></label>
+        {% endcomment %}
+        
+          <div class="">
+        <input type="radio" id="shirtCollar" name="collar-type" value="Shirt Collar">
+        <label for="shirtCollar"><img src="{{'short-kurta-image-shirtCollar.png' | asset_url}}"
+            alt="Shirt Collar"></label>
+        <span class="alankara-option-title" style="font-size: 16px;">Shirt Collar </span>
+          </div>
+        
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Shoulder Epaulette -->
+    <div class="step step-shoulder-epaulette" style="display: none;">
+      <h2>Shoulder Epaulette</h2>
+      <!-- Input fields for shoulder epaulette -->
+
+      <div class="accordion--wrapper">
+        
+          <div class="">
+        <input type="radio" id="withoutShoulderEpaulette" name="shoulder-epaulette-type"
+          value="Without Shoulder Epaulette">
+        <label for="withoutShoulderEpaulette"><img
+            src="{{'short-kurta-image-withoutShoulderEpaulette.png' | asset_url}}"
+            alt="Without Shoulder Epaulette"></label>
+        <span class="alankara-option-title" style="font-size: 16px;">Without Shoulder Epaulette</span>
+          </div>
+        {% comment %}
+        <input type="radio" id="withShoulderEpaulette" name="shoulder-epaulette-type" value=" Shoulder Epaulette">
+        <label for="withShoulderEpaulette"><img src="{{'short-kurta-image-withShoulderEpaulette.png' | asset_url}}"
+            alt="With Shoulder Epaulette"></label>
+        {% endcomment %}
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 6: Pocket -->
+    <div class="step step-pocket" style="display: none;">
+      <h2>Pocket</h2>
+      <!-- Input fields for pocket -->
+
+      <div class="accordion--wrapper">
+        
+          <div class="">
+        <input type="radio" id="pocketWith" name="pocket-type" value="With Pocket">
+        <label for="pocketWith"><img src="{{'short-kurta-image-pocketWith.png' | asset_url}}" alt="With Pocket"></label>
+        <span class="alankara-option-title" style="font-size: 16px;">With Pocket</span>
+          </div>
+          <div class="">
+        <input type="radio" id="pocketWithout" name="pocket-type" value="Without Pocket">
+        <label for="pocketWithout"><img src="{{'short-kurta-image-pocketWithout.png' | asset_url}}"
+            alt="Without Pocket"></label>
+        <span class="alankara-option-title" style="font-size: 16px;">Without Pocket</span>
+          </div>
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 7: Neck Placket -->
+    <div class="step step-neck-placket" style="display: none;">
+      <h2>Neck Placket</h2>
+      <!-- Input fields for neck placket -->
+
+      <div class="accordion--wrapper">
+        
+          <div class="">
+        <input type="radio" id="vfrontlacket" name="neck-placket-type" value="V-front Placket">
+        <label for="vfrontlacket"><img src="{{'short-kurta-image-vfrontlacket.png' | asset_url}}"
+            alt="V-front Placket"></label>
+        <span class="alankara-option-title" style="font-size: 16px;">V-front Placket</span>
+          </div>
+        {% comment %}
+        <input type="radio" id="squarefrontplacket" name="neck-placket-type" value="Square Front Placket">
+        <label for="squarefrontplacket"><img src="{{'short-kurta-image-squarefrontplacket.png' | asset_url}}"
+            alt="Square Front Placket"></label>
+        {% endcomment %}
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 8: Cuff -->
+    <div class="step step-cuff" style="display: none;">
+      <h2>Cuff</h2>
+      <!-- Input fields for cuff -->
+
+      <div class="accordion--wrapper">
+        
+          <div class="">
+        <input type="radio" id="cuffWithOut" name="cuff-type" value="Without Cuff">
+        <label for="cuffWithOut"><img src="{{'short-kurta-image-cuffWithOut.png' | asset_url}}"
+            alt="Without Cuff"></label>
+        <span class="alankara-option-title" style="font-size: 16px;">Without Cuff</span>
+          </div>
+        {% comment %}
+        <input type="radio" id="withcuff" name="cuff-type" value="With Cuff">
+        <label for="withcuff"><img src="{{'short-kurta-image-cuffWith.png' | asset_url}}" alt="With Cuff"></label>
+        {% endcomment %}
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 9: Bottom Cut -->
+    <div class="step step-bottom-cut" style="display: none;">
+      <h2>Bottom Cut</h2>
+      <!-- Input fields for bottom cut -->
+
+      <div class="accordion--wrapper">
+        
+          <div class="">
+        <input type="radio" id="straightCut" name="bottom-cut-type" value="Straight Cut">
+        <label for="straightCut"><img src="{{'short-kurta-image-straightCut.png' | asset_url}}"
+            alt="Straight Cut"></label>
+        <span class="alankara-option-title" style="font-size: 16px;">Straight Cut</span>
+          </div>
+        
+          <div class="">
+        <input type="radio" id="roundCut" name="bottom-cut-type" value="Round Cut">
+        <label for="roundCut"><img src="{{'short-kurta-image-roundCut.png' | asset_url}}" alt="Round Cut"></label>
+        <span class="alankara-option-title" style="font-size: 16px;">Round Cut</span>
+          </div>
+      </div>
+      <div class="step-button-list">
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </div>
+
+    <div class="step step-summary">
+      <h2>Summary</h2>
+      <!-- Show selected options summary -->
+      <div class="summary-section"></div>
+
+      <!-- Buy Now Button -->
+      {%- form 'product', product, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+
+      <div class="mb-3" hidden>
+        <select name="id" id="productSelect" class="form-control">
+          {% for variant in product.variants %}
+          {% if variant.available %}
+          <option {% if variant==product.selected_or_first_available_variant %} selected="selected" {% endif %}
+            data-circle="ProductSelect-option-size-{{ variant.title }}" value="{{ variant.id }}"
+            data-variantName="{{ variant.title }}" data-VariantCurrency="{{ shop.currency }}"
+            data-VariantPrice="{{ variant.price | money_without_currency  | strip_html  }}">
+            {{ variant.title }} - {{ variant.price | money_with_currency }}
+          </option>
+          {% else %}
+          <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      {%- unless product.has_only_default_variant -%}
+      {%- for option in product.options_with_values -%}
+      <fieldset class="product-variant-fielset" id="ProductSelect-option-{{ forloop.index0 }}"
+        name="{{ option.name | handleize }}">
+        <legend>
+          {{ option.name | escape }}
+          {% if option.name contains 'Size' or option.name contains 'size' %}
+          <span>
+            <nav class="product-guide-line">
+              <div class="modal-size-toggle" id="measurement-guide">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" fill="none" viewBox="0 0 18 24">
+                  <g clip-path="url(#clip0_3_2)">
+                    <path fill="#000"
+                      d="M5.717 24L.023 20.713 11.97.022l5.693 3.287L5.717 24zm-5.1-3.445l4.94 2.852L17.07 3.467 12.128.616.617 20.555z">
+                    </path>
+                    <path fill="#000"
+                      d="M1.998 17.727l.217-.376 1.516.875-.218.376-1.515-.875zm.962-1.666l.218-.377 3.174 1.833-.217.376-3.175-1.832zm.963-1.667l.217-.376 1.587.916-.217.376-1.587-.916zm.962-1.667l.217-.376 1.587.917-.217.376-1.587-.917zm.962-1.666l.217-.376 1.587.916-.217.376-1.587-.916zm.962-1.666l.217-.376 3.175 1.832-.218.376L6.81 9.395zm1.134-1.667l.217-.376 1.443.833-.217.376-1.443-.833zm.961-1.667l.218-.376 1.443.833-.218.376-1.443-.833zm.963-1.666l.217-.376 1.443.833-.217.376-1.443-.833zm.962-1.666l.217-.377 3.175 1.833-.218.376L10.83 2.73z">
+                    </path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_3_2">
+                      <path fill="#fff" d="M0 0h17.674v24H0z"></path>
+                    </clipPath>
+                  </defs>
+                </svg>
+                Size Guidelines
+              </div>
+            </nav>
+          </span>
+          {% endif %}
+        </legend>
+        {%- for value in option.values -%}
+        <!--
+                Check to see if there's a product size option. If there is a size, check to see if there's any availble for purchase. If not, set the variat control in a "disabled" state.
+              -->
+        {%- assign variant_label_state = true -%}
+        {%- if product.options.size == 1 -%}
+        {%- unless product.variants[forloop.index0].available -%}
+        {%- assign variant_label_state = false -%}
+        {%- endunless -%}
+        {%- endif -%}
+        {% assign inputStyle = '' %}
+        {% if option.name contains 'Color'
+        or option.name contains 'color'
+        or option.name contains 'Size'
+        or option.name contains 'size'
+        %}
+        {% assign inputStyle = 'input-radio-label-circle' %}
+        {% else %}
+        {% assign inputStyle = 'input-radio-label-chip' %}
+        {% endif %}
+        <label class="{{inputStyle}} {{ option.name }}" {% if option.name contains 'Color' or option.name
+          contains 'color' %} data-color="{{ value }}"
+          style="text-indent: -9999px; background:{{value | downcase | escape | remove:" " }}" {% endif %}
+          for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
+          <input hidden type="radio" {% if option.selected_value==value %} checked="checked" {% endif %} {% unless
+            variant_label_state %} disabled="disabled" {% endunless %} value="{{ value }}"
+            data-index="option{{ forloop.index }}" name="{{ option.name | handleize }}"
+            id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
+          {{ value | escape }}
+        </label>
+        {%- endfor -%}
+      </fieldset>
+      {%- endfor -%}
+      {%- endunless -%}
+<br>
+<label for="orderNote">Note:</label>
+<textarea id="orderNote" name="orderNote" rows="4" cols="50"> </textarea>
+
+<br>
+      <div class="product-form__buttons">
+        <div class="button-add-to-cart">
+          <div class="button-addto-card-wrapper hidden">
+            <input  type="number" class="form-control" name="quantity" id="quantity" value="1" min="1" max="1">
+            <input  type="text" class="jselecteValue" name="id" id="productID"
+              value="{{ product.selected_or_first_available_variant.id }}" {% if
+              product.selected_or_first_available_variant.available==false %} disabled {% endif %}>
+          </div>
+          <button class="custom-addto-product-data  button button--primary an-horizontal-shaking button-text-change">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      {%- endform -%}
+      <!-- end product form -->
+    </div>
+  </div>
+
+  <div id="full-image-view"></div>
+</div>
+
+<script>
+$(document).ready(function () {
+  var totalSteps = $('.step').length;
+  var $stepNavigation = $('.steps-navigation');
+
+  function showStep(step) {
+    $('.step').hide();
+    $('.step:nth-child(' + step + ')').show();
+    $stepNavigation.find('.step-nav').removeClass('active');
+    $stepNavigation.find('.step-nav[data-step="' + step + '"]').addClass('active');
+
+    console.log('currnet step: ' + step + ' :: ' + typeof step);
+    console.log('totalSteps step: ' + totalSteps + ' :: ' + typeof totalSteps);
+    // Display summary if reaching step-summary
+    if (step == 10) {
+      console.log('summary');
+      $('.custom-shopme').prop('disabled', false);
+      displaySummary();
+    } else {
+      console.log('else me ;()');
+    }
+  }
+
+  // Function to handle cloning the selected image
+  function cloneSelectedImage($selectedImage) {
+    var $clonedImage = $selectedImage.clone(); // Clone the selected image
+    var $altText = $selectedImage.attr('alt'); // Get the alt text of the selected image
+    var $imageContainer = $('<div></div>')
+      .append($clonedImage)
+      .append('<p>' + $altText + '</h6>'); // Create a container with image and alt text
+    console.log($altText);
+    $('#full-image-view').empty().append($imageContainer); // Append the cloned image to the full-image-view div
+  }
+
+  // Event listener for when an image label is clicked
+  $('label img').click(function () {
+    var $selectedImage = $(this); // Get the selected image
+    cloneSelectedImage($selectedImage); // Clone and display the selected image
+  });
+
+  function validateFabricStep() {
+    return $('input[name="fabric"]:checked').length > 0;
+  }
+
+  function validateBodyFitStep() {
+    return $('input[name="body-fit"]:checked').length > 0;
+  }
+
+  function validateSleeveStep() {
+    return $('input[name="sleeve-type"]:checked').length > 0;
+  }
+
+  function validateCollarStep() {
+    return $('input[name="collar-type"]:checked').length > 0;
+  }
+
+  function validateShoulderEpauletteStep() {
+    return $('input[name="shoulder-epaulette-type"]:checked').length > 0;
+  }
+
+  function validatePocketStep() {
+    return $('input[name="pocket-type"]:checked').length > 0;
+  }
+
+  function validateNeckPlacketStep() {
+    return $('input[name="neck-placket-type"]:checked').length > 0;
+  }
+
+  function validateCuffStep() {
+    return $('input[name="cuff-type"]:checked').length > 0;
+  }
+
+  function validateBottomCutStep() {
+    return $('input[name="bottom-cut-type"]:checked').length > 0;
+  }
+
+  function validateStep(step) {
+    switch (step) {
+      case 1:
+        return validateFabricStep();
+      case 2:
+        return validateBodyFitStep();
+      case 3:
+        return validateSleeveStep();
+      case 4:
+        return validateCollarStep();
+      case 5:
+        return validateShoulderEpauletteStep();
+      case 6:
+        return validatePocketStep();
+      case 7:
+        return validateNeckPlacketStep();
+      case 8:
+        return validateCuffStep();
+      case totalSteps:
+        return validateBottomCutStep();
+      default:
+        return true;
+    }
+  }
+
+  // Declare a global variable to store selected properties
+  var selectedProperties = {};
+
+  // Function to display the selected options in the summary section
+  function displaySummary() {
+    var summarySection = $('.step-summary .summary-section');
+    summarySection.empty(); // Clear previous summary content
+
+    console.log('yes');
+
+    $('.step:lt(' + totalSteps + ')').each(function () {
+      var stepTitle = $(this).find('h2').text();
+      var selectedOption = $(this).find('input[type="radio"]:checked').val();
+
+      console.log('selectedOption:' + selectedOption);
+
+      if (selectedOption) {
+        // Store the selected option in the global object
+        selectedProperties[stepTitle] = selectedOption;
+
+        summarySection.append(
+          '<p>' +
+          stepTitle +
+          ': <span>' +
+          selectedOption +
+          '</span> <input type="hidden" id="Submit_' +
+          stepTitle +
+          '" name="properties[' +
+          stepTitle +
+          ']" value="' +
+          selectedOption +
+          '" /></p>'
+        );
+      }
+    });
+  }
+
+  $('.step-nav').click(function () {
+    var step = $(this).data('step');
+    if (validateStep(step)) {
+      showStep(step);
+    } else {
+      alert('Please select an option before proceeding.');
+    }
+  });
+
+  $('.next-btn').click(function () {
+    var currentStep = $('.step:visible').index() + 1;
+    if (!validateStep(currentStep)) {
+      alert('Please select an option before proceeding.');
+      return;
+    }
+
+    var nextStep = currentStep + 1;
+    showStep(nextStep);
+  });
+
+  $('.prev-btn').click(function () {
+    var currentStep = $('.step:visible').index() + 1;
+    var prevStep = currentStep - 1;
+    showStep(prevStep);
+  });
+
+  $('form').submit(function (e) {
+    var currentStep = $('.step:visible').index() + 1;
+    if (!validateStep(currentStep)) {
+      e.preventDefault();
+      alert('Please select an option before proceeding.');
+    } else {
+      alert('Form submitted successfully!');
+      // Uncomment the following line to submit the form
+      // $(this).submit();
+    }
+  });
+
+  showStep(1); // Show the initial step
+
+  // product variant
+  $('.product-variant-fielset input[type="radio"]').click(function () {
+    var productVariant = "";
+    var optionSelect = $(this).attr("id"); // radio button for and id
+    var optionSelectVal = $(this).val(); // check me
+    $("#productSelect option").each(function () {
+      dataCircleValue = $(this).val(); // get product value id
+      dataCircle = $(this).attr("data-circle"); // get product label name to match with radio for and id
+      dataVariantCurrency = $(this).attr("data-variantcurrency"); // get currency code
+      dataVariantPrice = $(this).attr("data-VariantPrice"); // get price
+
+      // console.log('dataCircleValue: ' + dataCircleValue);
+
+      console.log('dataCircle: ' + dataCircle);
+      console.log('optionSelect: ' + optionSelect);
+      if (dataCircle == optionSelect) {
+        $(".jselecteValue").val(dataCircleValue); // pass product id to cart input
+      }
+
+    });
+  });
+
+  // // add to cart ajax
+  $('.custom-addto-product-data')
+    .unbind()
+    .click(function (e) {
+      e.preventDefault();
+
+      // Get the selected fabric value and product ID
+      var selectedFabric = $('input[name="fabric"]:checked').val();
+      var selectedProductId = $('input[name="fabric"]:checked').siblings('.fabric-id').text();
+
+      // Log the selected fabric and product ID to the console (you can replace this with your desired logic)
+      console.log("Selected Fabric: " + selectedFabric);
+      console.log("Selected Product ID: " + selectedProductId);
+
+      let dataItem = $('.jselecteValue').val();
+      console.log(selectedProperties);
+
+      let formData = {
+        items: [
+          {
+            id: dataItem,
+            quantity: 1,
+          },
+          {
+            id: selectedProductId,
+            quantity: 1,
+            properties: selectedProperties, // Include selected properties here
+          },
+        ],
+      };
+      console.log(formData);
+
+      // Add the line item to the cart using AJAX
+      fetch(window.Shopify.routes.root + 'cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          // Handle the response data, if needed
+          console.log("Response Data:", data);
+            // Get the domain name using JavaScript
+      var domainName = window.location.hostname;
+      // Navigate to the cart page (replace 'cart' with the actual path)
+      var cartPageUrl = 'https://' + domainName + '/cart';
+      window.location.href = cartPageUrl;
+          // $("body").addClass("cart-sidebar-show");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
+
+
+
+      
+    });
+
+
+});
+</script>

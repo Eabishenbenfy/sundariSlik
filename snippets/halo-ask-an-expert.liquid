@@ -1,0 +1,181 @@
+{%- assign btn = settings.ask_an_expert_btn -%}
+
+<div class="ask-an-expert halo-ask-an-expert{% if product %} has-product{% endif%}">
+    {%- if settings.ask_an_expert_title != blank -%}
+        <h4 class="heading text-center">
+            {{ settings.ask_an_expert_title | escape }}
+        </h4>
+    {%- endif -%}
+    {%- if settings.ask_an_expert_desc != blank -%}
+        <span class="text text-center">
+            {{ settings.ask_an_expert_desc | escape }}
+        </span>
+    {%- endif -%}
+    {%- if settings.ask_an_expert_questions != blank -%}
+        <div class="intro text-center">
+            {{ settings.ask_an_expert_questions | escape }}
+        </div>
+    {%- endif -%}
+
+    {%- assign contact_form_id = 'ContactForm-export' -%}
+    {%- form 'contact', id: contact_form_id, class: 'contact-form' -%}
+        {%- if form.posted_successfully? -%}
+            <div class="form-message">
+                <div class="alertBox alertBox--success">
+                    <p class="alertBox-message">
+                        {{ 'templates.contact.form.post_success' | t }}
+                    </p>
+                </div>
+            </div>
+        {%- elsif form.errors -%}
+            <div class="form-message">
+                <div class="alertBox alertBox--error">
+                    <p class="alertBox-message">
+                        <ul>
+                            {% for field in form.errors %}
+                              <li>
+                                  {{ form.errors.translated_fields[field] | capitalize }} - {{ form.errors.messages[field] }}
+                              </li>
+                            {% endfor %}
+                          </ul>
+                    </p>
+                </div>
+            </div>
+        {%- endif -%}
+      <input type="hidden" name="form_type" value="contact" /><input type="hidden" name="utf8" value="✓" />
+        {%- if product -%}
+            <input type="hidden" name="contact[halo-product-title]" value="{{ product.title }}" />
+            <input type="hidden" name="contact[halo-product-image]" value="{{ product.featured_image.src | img_url: '100x' }} "/>
+            <input type="hidden" name="contact[halo-product-link]" value="{{ shop.url | append: product.url }}"/>
+        {%- endif -%}
+        <div class="form-field">
+            <label class="form-label" for="contactFormName-{{ section.id }}">
+                {{ 'templates.contact.form.name' | t }} <span class="red-asterisk">*</span>
+            </label>
+            <input class="form-input form-input-placeholder"
+                type="text"
+                id="contactFormName-{{ section.id }}"
+                name="contact[name]"
+                autocomplete="name"
+                autocapitalize="words"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                {% comment %} placeholder="{{ 'templates.contact.form.name' | t }}" {% endcomment %}
+                aria-required="false"
+                required
+            >
+        </div>
+        <div class="form-field">
+            <label class="form-label" for="ContactFormPhone-{{ section.id }}">
+                {{ 'templates.contact.form.phone' | t }} <span class="red-asterisk">*</span>
+            </label>
+            <input class="form-input form-input-placeholder"
+                type="tel"
+                id="ContactFormPhone-{{ section.id }}"
+                name="contact[phone]"
+                autocomplete="tel"
+                pattern="[0-9]*"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                {% comment %} placeholder="{{ 'templates.contact.form.phone' | t }}" {% endcomment %}
+                aria-required="false"
+                required
+            >
+        </div>
+        <div class="form-field{% if form.errors contains "email" %} form-field--error{% endif %}">
+            <label class="form-label" for="contactFormEmail-{{ section.id }}">
+                {{ 'templates.contact.form.email' | t }} <span class="red-asterisk">*</span>
+            </label>
+            <input class="form-input form-input-placeholder{% if form.errors contains "email" %} error{% endif %}"
+                type="email"
+                name="contact[email]"
+                id="contactFormEmail-{{ section.id }}"
+                spellcheck="false"
+                autocomplete="email"
+                autocorrect="off"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                    aria-invalid="true"
+                    aria-describedby="ContactForm-email-error"
+                {% endif %}
+                {% comment %} placeholder="{{ 'templates.contact.form.email' | t }}" {% endcomment %}
+                required
+            >
+        </div>
+        {%- if settings.ask_an_expert_option_1_1 != blank or settings.ask_an_expert_option_1_2 != blank or settings.ask_an_expert_option_1_3 != blank -%}
+            <div class="form-field form-field-radio">
+                {%- if settings.ask_an_expert_option_1 != blank -%}
+                    <label class="form-label">
+                        {{ settings.ask_an_expert_option_1 | escape }}
+                    </label>
+                {%- endif -%}
+                {%- if settings.ask_an_expert_option_1_1 != blank -%}
+                    <input class="form-radio" checked id="askAnExpertRadio1" type="radio" name="askAnExpertRadioFirst" value="{{ settings.ask_an_expert_option_1_1 | split: '|' | first }}"/>
+                    <label class="form-label form-label--radio" for="askAnExpertRadio1">
+                        {{ settings.ask_an_expert_option_1_1 | escape }}
+                    </label>
+                {%- endif -%}
+                {%- if settings.ask_an_expert_option_1_2 != blank -%}
+                    <input class="form-radio" id="askAnExpertRadio2" type="radio" name="askAnExpertRadioFirst" value="{{ settings.ask_an_expert_option_1_2 | split: '|' | first }}"/>
+                    <label class="form-label form-label--radio" for="askAnExpertRadio2">
+                        {{ settings.ask_an_expert_option_1_2 | escape }}
+                    </label>
+                {%- endif -%}
+                {%- if settings.ask_an_expert_option_1_3 != blank -%}
+                    <input class="form-radio" id="askAnExpertRadio3" type="radio" name="askAnExpertRadioFirst" value="{{ settings.ask_an_expert_option_1_3 | split: '|' | first }}"/>
+                    <label class="form-label form-label--radio" for="askAnExpertRadio3">
+                        {{ settings.ask_an_expert_option_1_3 | escape }}
+                    </label> 
+                {%- endif -%}
+            </div>
+        {%- endif -%}
+        <div class="form-field">
+            <label class="form-label" for="contactFormMessage-{{ section.id }}">
+                {{ 'templates.contact.form.comment' | t }}  <span class="red-asterisk">*</span>
+            </label>
+              <textarea class="form-input form-input-hiddenPlaceholder" rows="8" name="contact[body]" id="contactFormMessage-{{ section.id }}" 
+                {% comment %} placeholder="{{ 'templates.contact.form.comment' | t }}"  {% endcomment %}
+                aria-required="true"
+                aria-invalid="true"
+                required
+            >
+                  {{- form.body -}}
+              </textarea>
+        </div>
+        {%- if settings.ask_an_expert_option_2_1 != blank or settings.ask_an_expert_option_2_2 != blank or settings.ask_an_expert_option_2_3 != blank -%}
+            <div class="form-field form-field-radio form-field-radio-2">
+                {%- if settings.ask_an_expert_option_2 != blank -%}
+                    <label class="form-label">
+                        {{ settings.ask_an_expert_option_2 | escape }}
+                    </label>
+                {%- endif -%}
+                {%- if settings.ask_an_expert_option_2_1 != blank -%}
+                    <input class="form-radio" checked id="askAnExpertRadio21" type="radio" name="askAnExpertRadioSecond" value="{{ settings.ask_an_expert_option_2_1 | split: '|' | first }}"/>
+                    <label class="form-label form-label--radio" for="askAnExpertRadio21">
+                        {{ settings.ask_an_expert_option_2_1 | escape }}
+                    </label>
+                {%- endif -%}
+                {%- if settings.ask_an_expert_option_2_2 != blank -%}
+                    <input class="form-radio" id="askAnExpertRadio22" type="radio" name="askAnExpertRadioSecond" value="{{ settings.ask_an_expert_option_2_2 | split: '|' | first }}"/>
+                    <label class="form-label form-label--radio" for="askAnExpertRadio22">
+                        {{ settings.ask_an_expert_option_2_2 | escape }}
+                    </label>  
+                {%- endif -%}
+                {%- if settings.ask_an_expert_option_2_3 != blank -%}
+                    <input class="form-radio" id="askAnExpertRadio23" type="radio" name="askAnExpertRadioSecond" value="{{ settings.ask_an_expert_option_2_3 | split: '|' | first }}"/>
+                    <label class="form-label form-label--radio" for="askAnExpertRadio23">
+                        {{ settings.ask_an_expert_option_2_3 | escape }}
+                    </label> 
+                {%- endif -%}
+            </div>
+        {% endif %}
+        <div class="form-actions">
+            <input type="submit" class="button button--primary" value="Submit" role="button">
+        </div>
+    {%- endform -%}
+    <div class="message"></div>
+    <div class="halo-ask-an-expert-fineprint">
+    <p>Call / WhatsApp or text message us on +91 99627 12299 for any queries - we'll be happy to help if we can.</p>
+    <p>You can also email us at different@sundarisilks.com, or chat with us right here via the online chat button on the site. Should we be unavailable, leave us a message there and we'll revert.</p>
+    </div>
+</div>

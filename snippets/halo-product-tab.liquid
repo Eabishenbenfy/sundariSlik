@@ -1,0 +1,397 @@
+{%- liquid
+	assign tab_border_color = section.settings.tab_border_color
+	assign tab_border_color_rgb = section.settings.tab_border_color_rgb
+	if tab_border_color_rgb != blank
+		assign border_color = tab_border_color_rgb
+	else
+		assign border_color = tab_border_color
+	endif
+
+	assign isVerticalSidebar = false
+	if tab_layout == 'vertical_sidebar'
+		assign isVerticalSidebar = 'sidebar'
+	endif
+
+	assign isVerticalSidebarMobile = false
+	if tab_layout_mobile == 'vertical_sidebar'
+		assign isVerticalSidebarMobile = 'sidebar-mobile'
+	endif
+-%}
+<product-tab
+  class="productView-tab layout-{{ tab_layout }}"
+  data-vertical="{{ isVerticalSidebar }}"
+  data-vertical-mobile="{{ isVerticalSidebarMobile }}">
+  {%- if tab_layout == 'horizontal' or tab_layout == 'popup' -%}
+    <ul class="tabs tabs-horizontal list-unstyled disable-srollbar">
+      {%- for block in section.blocks -%}
+        {%- liquid
+					assign title = block.settings.title
+					assign key = block.settings.product_tab_key_metafield
+                    assign source = block.settings.product_custom_source
+					assign has_tab = false
+    
+                    if source == 'dynamic'
+                       assign meta_ref = key
+                    else 
+                       assign meta_ref = product.metafields.c_f[key]
+                    endif 
+                   
+					if block.type == 'custom'
+						if block.settings.type == 'metafield'
+							if meta_ref
+				                assign has_tab = true
+				            else
+				            	assign has_tab = false
+				            endif
+				        else
+				        	assign has_tab = true
+				        endif
+					else
+						assign has_tab = true
+					endif
+				-%}
+        {%- if has_tab and title != blank -%}
+          <li class="tab">
+            <a
+              class="tab-title{% if block.type == 'description' and tab_layout == 'horizontal' %} is-open{% endif %}"
+              href="#tab-{{ block.settings.title | escape | handleize }}"
+              style="--border-color: {{ border_color }}">
+              {{ block.settings.title | escape }}
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+  <div class="tabs-contents tabs-contents-{{ tab_layout }} clearfix halo-text-format">
+    {%- for block in section.blocks -%}
+      {%- liquid
+				assign title = block.settings.title
+				assign has_tab = false
+				assign source = block.settings.product_custom_source
+				assign key = block.settings.product_tab_key_metafield
+				 
+				if source == 'dynamic'
+                   assign meta_ref = key
+                else 
+                   assign meta_ref = product.metafields.c_f[key]
+                endif
+
+				if block.type == 'custom'
+					if block.settings.type == 'metafield'
+						if meta_ref
+			                assign has_tab = true
+			                assign content = meta_ref
+			            else
+			            	assign has_tab = false
+			            endif
+			        else
+			        	assign has_tab = true
+			        	assign content = block.settings.content
+			        endif
+				else
+					assign has_tab = true
+					if block.type == 'description'
+                        assign current_variant = product.selected_or_first_available_variant
+                        if current_variant.metafields.c_f.variant_description != blank
+                            assign content = current_variant.metafields.c_f.variant_description
+                        else
+                            assign content = product.description
+                        endif
+					else block.type == 'review'
+						assign content = product.metafields.spr.reviews
+					endif
+				endif
+
+				if block.type == 'description' or block.type == 'review' or block.type == 'custom'
+					assign style_mobile = false
+					if block.settings.open_tab_mobile
+						assign style_mobile = 'show-mobile'
+					endif
+					if tab_layout_mobile == 'popup'
+						assign style_mobile = 'popup-mobile'
+					elsif tab_layout_mobile == 'vertical_sidebar'
+						assign style_mobile = 'sidebar-mobile'
+					endif
+				endif
+			-%}
+      {%- if has_tab and title != blank -%}
+        {% if block.type == 'custom' and title == 'Wash Care' and product.metafields.custom.wash_care_tips.value == blank %}
+          {% elsif block.type == 'custom' and title == 'Size Chart' and product.metafields.custom.size_chart.value == blank %}
+          {% else %}
+            <div
+              data-meda=""
+              class="tab-content{% if block.type == 'description' and tab_layout == 'horizontal' %} is-active{% endif %}"
+              id="tab-{{ title | escape | handleize }}">
+              <div class="toggle-title{% if settings.product_page_layout == 'full_width_2' or template.suffix == 'template-full-width-2' %} title-content-full{% endif %}">
+
+                <a
+                  class="toggleLink{% if style_mobile %} {{ style_mobile }}{% endif %}"
+                  data-collapsible
+                  href="#tab-{{ title | escape | handleize }}-mobile">
+                  <span class="text">
+                    {{ title | escape }}
+                  </span>
+                  {% if icon_style_layout == 'style_1' %}
+                    <span class="icon-dropdown">
+                      {% if settings.product_page_layout == 'full_width_2' or template.suffix == 'template-full-width-2' %}
+                        {% render 'icon-down-2' %}
+                      {% else %}
+                        {% render 'icon-down' %}
+                      {% endif %}
+                    </span>
+                  {% else %}
+                    <span class="icon-plus">&nbsp;</span>
+                  {% endif %}
+                </a>
+              </div>
+              <div
+                class="toggle-content{% if style_mobile %} {{ style_mobile }}{% endif %}{% if block.settings.enable_btn_show_more %} toggle-content--height{% endif %}"
+                id="tab-{{ title | escape | handleize }}-mobile"
+                {% if block.settings.enable_btn_show_more %}
+                style="--maximum-des-to-show: {{ block.settings.maximum_des_to_show | append: 'px'}}"
+                {% endif %}
+                {% if block.type == 'description' %}
+                data-product-description-{{ product.id }}
+                {% endif %}>
+                {%- if tab_layout == 'vertical_sidebar' or style_mobile == 'sidebar-mobile' or style_mobile == 'popup-mobile' -%}
+                  <div class="tab-popup-header">
+                    <h5>
+                      <span class="text">{{ title | escape }}</span>
+                    </h5>
+                    <a class="pdViewTab-close pdViewTab-close-mobile" href="javascript:void(0)">x</a>
+                  </div>
+                  <div class="tab-popup-content">
+                  {%- endif -%}
+                  {%- if block.type == 'review' -%}
+                    <div
+                      class="productView-review"
+                      id="shopify-product-reviews"
+                      data-id="{{ product.id }}">
+                    {%- endif -%}
+                    {%- if block.type == 'custom' and title == 'Specification' -%}
+                      <table class="product-detail">
+                        {% if product.metafields.custom.material.value != blank %}
+                          <tr>
+                            <td>Material</td>
+                            <td>{{ product.metafields.custom.material.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.body_color.value != blank %}
+                          <tr>
+                            <td>Body Color</td>
+                            <td>{{ product.metafields.custom.body_color.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.border_color.value != blank %}
+                          <tr>
+                            <td>Border Color</td>
+                            <td>{{ product.metafields.custom.border_color.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.pallu_color.value != blank %}
+                          <tr>
+                            <td>Pallu Color</td>
+                            <td>{{ product.metafields.custom.pallu_color.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.blouse.value != blank %}
+                          <tr>
+                            <td>Blouse</td>
+                            <td>{{ product.metafields.custom.blouse.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.border.value != blank %}
+                          <tr>
+                            <td>Border</td>
+                            <td>{{ product.metafields.custom.border.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.blouse_color.value != blank %}
+                          <tr>
+                            <td>Blouse Color</td>
+                            <td>{{ product.metafields.custom.blouse_color.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.zari.value != blank %}
+                          <tr>
+                            <td>Zari</td>
+                            <td>{{ product.metafields.custom.zari.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.purity.value != blank %}
+                          <tr>
+                            <td>Purity</td>
+                            <td>{{ product.metafields.custom.purity.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.size.value != blank %}
+                          <tr>
+                            <td>Size</td>
+                            <td>
+                              {% for customSize in product.metafields.custom.size.value %}
+                                <span>{{ customSize }}</span>
+                              {% endfor %}
+                            </td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.color.value != blank %}
+                          <tr>
+                            <td>Color</td>
+                            <td>{{ product.metafields.custom.color.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.sleeve.value != blank %}
+                          <tr>
+                            <td>Sleeve</td>
+                            <td>{{ product.metafields.custom.sleeve.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.bottom.value != blank %}
+                          <tr>
+                            <td>Bottom</td>
+                            <td>{{ product.metafields.custom.bottom.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.bottom_color.value != blank %}
+                          <tr>
+                            <td>Bottom Color</td>
+                            <td>{{ product.metafields.custom.bottom_color.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.dupatta.value != blank %}
+                          <tr>
+                            <td>Dupatta</td>
+                            <td>{{ product.metafields.custom.dupatta.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.collar.value != blank %}
+                          <tr>
+                            <td>Collar</td>
+                            <td>{{ product.metafields.custom.collar.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.age.value != blank %}
+                          <tr>
+                            <td>Age</td>
+                            <td>
+                              {% for customAge in product.metafields.custom.age.value %}
+                                <span>{{ customAge }}</span>
+                              {% endfor %}
+                            </td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.angavastram.value != blank %}
+                          <tr>
+                            <td>Angavastram</td>
+                            <td>{{ product.metafields.custom.angavastram.value }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.variants.first.weight != blank %}
+                          <tr>
+                            <td>Weight</td>
+                            <td>{{ product.variants.first.weight | weight_with_unit }}</td>
+                          </tr>
+                        {% endif %}
+                      </table>
+
+                    {%- elsif block.type == 'custom' and title == 'Wash Care' -%}
+                      <div>
+                        {{ product.metafields.custom.wash_care_tips.value }}
+                      </div>
+                    {%- elsif block.type == 'custom' and title == 'Size Chart' -%}
+                      <div>
+                        {{ product.metafields.custom.size_chart.value }}
+                      </div>
+                    {%- elsif block.type == 'custom' and title == 'Delivery Shipping' -%}
+                      <div>
+                        {{ product.metafields.custom.delivery_shipping.value }}
+                      </div>
+                    {%- elsif block.type == 'custom' and title == 'Note' -%}
+                      <div>
+                        There might be slight variations in color due to monitor resolution.
+                      </div>
+                    {%- else -%}
+                      {{ content }}
+                    {%- endif -%}
+                    {%- if block.settings.enable_btn_show_more -%}
+                      {% assign letter = content | size %}
+                      <div
+                        class="tab-showMore is-show"
+                        data-letter="{{ letter }}"
+                        data-des-max="{{ block.settings.maximum_des_to_show }}">
+                        <a
+                          class="button button--secondary"
+                          href="#tab-{{ title | escape | handleize }}-mobile"
+                          data-show-more-text="{{ 'products.product.read_more' | t }}"
+                          data-show-less-text="{{ 'products.product.read_less' | t }}"
+                          data-show-more-toogle>
+                          {{ 'products.product.read_more' | t }}
+                        </a>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.type == 'review' -%}
+                    </div>
+                  {%- endif -%}
+                  {%- if tab_layout == 'vertical_sidebar' or style_mobile == 'sidebar-mobile' or style_mobile == 'popup-mobile' -%}
+                  </div>
+                {%- endif -%}
+              </div>
+              {%- if tab_layout == 'popup' -%}
+                <a class="pdViewTab-close" href="javascript:void(0)">x</a>
+              {%- endif -%}
+            </div>
+        {%- endif -%}
+      {% endif %}
+    {%- endfor -%}
+
+    <!-- Made In -->
+    <div class="product-madeIn">
+      <div class="">
+        <img src="https://cdn.shopify.com/s/files/1/0490/1158/9282/files/made-in-india.svg?v=1717684499" alt="made in india" />
+        <p> Made in India </p>
+      </div>
+      <div class="">
+        <a href="https://www.sundarisilks.com/policies/refund-policy" target="_blank">
+        <img src="https://cdn.shopify.com/s/files/1/0490/1158/9282/files/delivery-status.png?v=1717684219" alt="Delivery Status" />
+        <p>Easy Return</p>
+        </a>
+      </div>
+    </div>
+    <!-- Made In -->
+    <!-- Common NOTE -->
+    <div class="product-need-help-card">
+      <h2>Have a question? We can help.</h2>
+      <p class="days-and-time">Mon-Sat</p>
+      <p class="days-and-time">  - 10:00 AM TO 06:00 PM (IST)</p>
+      <h4 class="contact-wrapper">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0490/1158/9282/files/whatsapp.svg?v=1717439292"
+          class="note-img"
+        />Call or WhatsApp us
+      </h4>
+      <div class="contact-numbers">
+        <a href="https://wa.me/+919962712299" target="_blank">
+          +91 99627 12299
+        </a> |
+        <a href="tel:+918680877999" target="_blank">
+            +91 86808 77999
+        </a>
+      </div>
+      <h4 class="contact-wrapper">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0490/1158/9282/files/mail.svg?v=1717439270"
+          class="note-img"
+        />Email us &nbsp;
+          <a class="contact-email" href="mailto:different@sundarisilks.com"> different@sundarisilks.com</a>
+      </h4>
+      <span class="footer-contact-info">
+        or chat/DM us on our Instagram and Facebook page.
+      </span>
+    </div>
+    <!-- Common NOTE -->
+  </div>
+
+</product-tab>
+<script src="{{ 'tabs.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'halo-faqs.js' | asset_url }}" defer="defer"></script>
